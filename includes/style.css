@@ -1,4 +1,4 @@
-/*Css reset*/
+/*css reset*/
 
 * {
     padding: 0;
@@ -8,3 +8,79 @@
 header, footer, main, nav, aside, section, article {
     display: block;
 }
+
+/* end of css reset*/
+
+
+/*globals*/
+
+body {
+    direction: rtl;
+    background: #eee;
+}
+
+#wrapper {
+    width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    position: relative;
+}
+
+.clear {
+    clear: both;
+}
+
+
+/*end of globals*/
+
+header {
+    height: 175px;
+}
+
+nav#mainNav {
+    height: 48px;
+    background: #ebebeb;
+}
+
+section#tools{
+    width: 268px;
+    background: #fff;
+    border-left: 1px solid #d6d6d6;
+    float: right;
+}
+
+main {
+    width: 730px;
+    float: left;
+}
+
+#gallery {
+    height: 262px;
+    border: 1px solid #d8d8d8;
+}
+
+#feed {
+    height: 205px;
+    background: #fff;
+}
+
+#weeklyRecipe {
+    width: 502px;
+    height: 100%;
+    background: #e6e6e6;
+    margin-right: 7px;
+    float: left;
+}
+
+#topWriters {
+    width: 208px;
+    height: 100%;
+    background: #e6e6e6;
+    float: right;
+}
+
+footer {
+    background: #fff;
+    height: 32px;
+}
+
