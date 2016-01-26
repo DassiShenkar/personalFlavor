@@ -1,0 +1,10 @@
+/*Css reset*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header, footer, main, nav, aside, section, article {
+    display: block;
+}
