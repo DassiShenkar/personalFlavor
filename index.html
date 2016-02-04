@@ -8,28 +8,99 @@
     <body>
         <div id="wrapper">
             <header>
-
+                <a id="logo" href="#"></a>
+                <a id="login" href="#">ברוך הבא,
+                    <strong>בר ירון</strong>
+                </a>
+                <div class="clear"></div>
             </header>
-            <nav id="mainNav">
-
-            </nav>
             <main>
+                <nav id="mainNav">
+                    <ul>
+                        <li class="selected"><a href="#">המתכונים שאהבתי</a></li>
+                        <li><a href="#">מתכונים שערכתי</a></li>
+                        <li><a href="#">נצפה לאחרונה</a></li>
+                        <div class="clear"></div>
+                    </ul>
+                </nav>
                 <section id="gallery">
-
+                    <ul class="thumbs">
+                        <li>
+                            <a href="">
+                                <img src="./images/hamburger.JPG" alt="סנדוויץ קישוא וסלק">
+                                <h4>סנדוויץ קישוא וסלק</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./images/veg.JPG" alt="ירקות כבושים כמו שאוהבים">
+                                <h4>ירקות כבושים כמו שאוהבים</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./images/pita.JPG" alt="פלאפל כמו של פעם">
+                                <h4>פלאפל כמו של פעם</h4>
+                            </a>
+                        </li>
+                    </ul>
                 </section>
                 <section id="feed">
-                    <article id="weeklyRecipe"></article>
-                    <article id="topWriters"></article>
+                    <article id="weeklyRecipe">
+                        <section>
+                            <h2>מתכון השבוע</h2>
+                            <secttion  id="content">
+                                <h4>סופלה שוקולד</h4>
+                                <h4 id="editor">מאת <a href="#">שלום לוי</a></h4>
+                                <p>סופלה שוקולד קל ומהיר להכנה...</p>
+                            </secttion>
+                        </section>
+                        <img src="./images/cake.jpg" alt="weekly recipe" title="weekly recipe">
+                    </article>
+                    <section id="topWriters">
+                        <h2>כותבים מובילים</h2>
+                        <ol>
+                            <li><a href="#">שלום לוי</a></li>
+                            <li><a href="#">לירן כהן</a></li>
+                            <li><a href="#">איציק בר</a></li>
+                            <li><a href="#">אהובה רוזנשטיין</a></li>
+                            <li><a href="#">גלעד ארדן</a></li>
+                        </ol>
+                    </section>
                     <div class="clear"></div>
                 </section>
+                <div class="clear"></div>
+                <footer>
+                    <ul>
+                        <li><a href="#">אודות</a><span class="dash">-</span></li>
+                        <li><a href="#">מפת אתר</a><span class="dash">-</span></li>
+                        <li><a href="#">תנאי שימוש</a><span class="dash">-</span></li>
+                        <li><a href="#">דרושים</a><span class="dash">-</span></li>
+                        <li><a href="#">כתבו לנו</a></li>
+                    </ul>
+                    <a id="copyright" href="#">Copyright &copy 2015</a>
+                    <div class="clear"></div>
+                </footer>
             </main>
             <section id="tools">
-
+                <a id="addBtn" href="#" class="btn">הוסף מתכון<button class="plus"></button></a>
+                <ul>
+                    <li>
+                        <h3>מה מבשלים?</h3>
+                    </li>
+                    <li>
+                        <h3>סגנון</h3>
+                    </li>
+                    <li>
+                        <h3>רמת קושי</h3>
+                    </li>
+                    <li>
+                        <h3>בחר מצרכים</h3>
+                    </li>
+                </ul>
+                <a id="searchBtn" href="#" class="btn">חפש</a>
             </section>
             <div class="clear"></div>
-            <footer>
-
-            </footer>
         </div>
     </body>
 </html>

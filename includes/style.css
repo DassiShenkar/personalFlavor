@@ -1,29 +1,51 @@
-/*css reset*/
+/* css reset */
 
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 header, footer, main, nav, aside, section, article {
     display: block;
 }
 
-/* end of css reset*/
+/*  end of css reset */
 
 
-/*globals*/
+/* globals */
 
 body {
     direction: rtl;
     background: #eee;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 #wrapper {
     width: 1000px;
     margin: 0 auto;
     background: #fff;
-    position: relative;
+}
+
+h2 {
+    color: #0844a4;
+    font-size: 150%;
+    font-weight: normal;
+    text-align: center;
+    background: #fff;
+    border-radius: 6px;
+    padding: 22px 3px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+strong {
+    font-weight: bold;
 }
 
 .clear {
@@ -31,56 +53,329 @@ body {
 }
 
 
-/*end of globals*/
+/* end of globals */
+
 
 header {
+    /*background: url("../images/header.jpg") no-repeat;*/
+    height: 174px;
+}
+
+#logo {
+    width: 141px;
     height: 175px;
-}
-
-nav#mainNav {
-    height: 48px;
-    background: #ebebeb;
-}
-
-section#tools{
-    width: 268px;
-    background: #fff;
-    border-left: 1px solid #d6d6d6;
+    background: url('../images/tasteLogo.png') no-repeat;
     float: right;
+}
+
+#login {
+    padding: 0 60px;
+    float: left;
+    margin-top: 118px;
+    color: #929292;
+    font-size: 110%;
+    text-decoration: none;
 }
 
 main {
-    width: 730px;
     float: left;
+    background: #fff;
+    padding-left: 18px;
+}
+
+#mainNav {
+    height: 47px;
+}
+
+#mainNav ul{
+    list-style: none;
+}
+
+#mainNav li {
+    background: #ebebeb;
+    border-bottom: 1px solid #d6d6d6;
+    float: right;
+    border-radius: 8px 8px 0 0;
+    padding: 12px 56px;
+    margin-left: 1px;
+    text-align: center;
+}
+
+#mainNav li a {
+    font-size: 120%;
+    text-decoration: none;
+    color: #606060;
+}
+
+#mainNav .selected {
+    background: #fff;
+    border: 1px solid #d6d6d6;
+    border-bottom: none;
+    color: #000;
+}
+
+#mainNav .selected a {
+    color: #000;
 }
 
 #gallery {
-    height: 262px;
-    border: 1px solid #d8d8d8;
+    /*background: url("../images/main.jpg") no-repeat;*/
+    height: 311px;
+    margin-bottom: 11px;
+    border: 1px solid #d6d6d6;
+    border-top: none;
+}
+
+#gallery ul {
+    list-style: none;
+}
+
+.thumbs {
+    padding: 10px 26px;
+}
+
+#gallery li {
+    float: right;
+    text-align: center;
+    margin-left: 12px;
+}
+
+#gallery li:last-child {
+    float: right;
+    text-align: center;
+    margin-left: 0;
+}
+
+#gallery li a {
+    text-decoration: none;
+}
+
+#gallery li h4 {
+    color: rgb(96,96,96);
+    font-size: 110%;
+    font-weight: normal;
 }
 
 #feed {
-    height: 205px;
+    /*background: url("../images/feed.jpg") no-repeat;*/
     background: #fff;
+    height: 204px;
+}
+
+#feed section {
+    padding: 10px 10px 15px 10px;
+    border-radius: 4px;
+    background: #e6e6e6;
+    width: 198px;
 }
 
 #weeklyRecipe {
-    width: 502px;
-    height: 100%;
-    background: #e6e6e6;
     margin-right: 7px;
     float: left;
+    background: #e6e6e6;
+    border-radius: 4px;
 }
 
-#topWriters {
-    width: 208px;
-    height: 100%;
-    background: #e6e6e6;
+#weeklyRecipe section {
     float: right;
 }
 
-footer {
+#content {
+    float: right;
     background: #fff;
-    height: 32px;
+    border-radius: 6px;
+    padding: 4px;
 }
+
+#content p, h4 {
+    font-size: 110%;
+}
+
+#content p {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+#weeklyRecipe img{
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#editor {
+    font-weight: normal;
+}
+
+#editor a {
+    text-decoration: none;
+    color: #0c59cf;
+}
+
+section#topWriters {
+    float: right;
+    padding: 10px 13px 15px 10px
+}
+
+#topWriters ol {
+    list-style-position: inside;
+    background: #fff;
+    border-radius: 8px;
+    padding: 4px 4px 8px 4px;
+}
+
+#topWriters li a {
+    text-decoration: none;
+    color: rgb(61,138,247);
+}
+
+footer {
+    /*background: url("../images/footer.jpg") no-repeat;*/
+    background: #fff;
+}
+
+footer ul {
+    list-style: none;
+    float: right;
+}
+
+footer li {
+    float: right;
+    margin-left: 4px;
+    padding: 7px 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #000;
+    font-size: 80%;
+}
+
+.dash {
+    font-size: 30%;
+    padding-right: 4px;
+    line-height: 80%;
+    vertical-align: middle;
+}
+
+#copyright {
+    float: left;
+    padding: 11px 21px;
+    font-size: 75%;
+}
+
+#tools {
+    /*background: url("../images/side.jpg") no-repeat;*/
+    height: 559px;
+    width: 251px;
+    float: right;
+    padding-right: 15px;
+}
+
+
+.btn {
+    color: #606060;
+    font-size: 200%;
+    text-decoration: none;
+    border-radius: 4px;
+    display: block;
+}
+
+#addBtn {
+    width: 90%;
+    background: #d6d6d6;
+    padding: 5px 10px 5px 0;
+}
+
+.plus{
+    width:36px;
+    height:36px;
+    position:relative;
+    background-color:#75ba61;
+    border-radius:100px;
+    border: 2px solid #fff;
+    cursor:pointer;
+    vertical-align: middle;
+    margin-right: 14px;
+}
+
+
+.plus:before{
+    content:"";
+    background-color: #fff;
+    height:22px;
+    left:14px;
+    position:absolute;
+    top:5px;
+    width:3px;
+}
+
+.plus:after {
+    content:"";
+    background-color: #fff;
+    height:3px;
+    left:5px;
+    position:absolute;
+    top:14px;
+    width:22px;
+}
+
+.one:hover{
+    background-color:rgba(0,0,0,.8);
+}
+
+.one:hover .two{
+    display:none;
+}
+
+#searchBtn {
+    background: #e6e6e6;
+    text-align: center;
+}
+
+#tools ul {
+    list-style: none;
+    margin: 15px 0;
+}
+
+#tools li {
+    font-size: 150%;
+}
+
+#tools li::after {
+    content: "";
+    display: inline-block;
+    /* By using an em scale, the arrows will size with the font */
+    width: 0.48em;
+    height: 0.48em;
+    border-right: 0.16em solid black;
+    border-top: 0.16em solid black;
+    transform: rotate(225deg);
+    border-color: rgb(230, 22, 16);
+}
+
+#tools li:hover {
+    cursor: pointer;
+}
+
+/* Change color */
+#tools li:hover h3{
+    color: rgb(230, 22, 16); /* For the text */
+}
+#tools li:hover::after {
+    border-color: red; /* For the arrow (which is a border) */
+}
+
+#tools h3 {
+    display: inline-block;
+    border-top: 1px dotted #CECBCB;
+    color: #606060;
+    width: 200px;
+    padding: 10px 3px;
+}
+
+#tools li:last-child h3 {
+    border-bottom: 1px dotted #CECBCB;
+}
+
+
 
