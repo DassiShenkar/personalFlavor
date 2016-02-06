@@ -35,6 +35,12 @@ body {
     background: #fff;
 }
 
+h1 {
+    font-size: 240%;
+    font-weight: normal;
+    color: rgb(68,68,68);
+}
+
 h2 {
     color: #0844a4;
     font-size: 150%;
@@ -49,6 +55,10 @@ h2 {
 h3 {
     font-size: 100%;
     font-weight: normal;
+}
+
+ul {
+    list-style: none;
 }
 
 strong {
@@ -79,15 +89,11 @@ strong {
 }
 
 main {
-    width: 71.2%;
+    width: 71.8%;
     float: left;
     position: relative;
     background: #fff;
     margin-left: 2%;
-}
-
-#mainNav ul{
-    list-style: none;
 }
 
 #mainNav li {
@@ -122,10 +128,6 @@ main {
     margin-bottom: 2%;
     border: 1px solid #d6d6d6;
     border-top: none;
-}
-
-#gallery ul {
-    list-style: none;
 }
 
 .thumbs {
@@ -235,7 +237,6 @@ footer {
 
 footer ul {
     width: 100%;
-    list-style: none;
     float: left;
     margin-bottom: 1%;
 }
@@ -334,7 +335,6 @@ footer a {
 }
 
 #tools ul {
-    list-style: none;
     margin-top: 5%;
 }
 
@@ -378,5 +378,112 @@ footer a {
     border-bottom: 1px dotted #CECBCB;
 }
 
+/*  recipe single page */
 
+.single-page main {
+    width: 61.8%;
+    margin-left: 10%;
+}
 
+#breadcrumbs {
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+#breadcrumbs li {
+     float: right;
+ }
+
+/*#breadcrumbs li:after {*/
+    /*content: "\003e";*/
+    /*margin: 0 2%;*/
+    /*font-size: 90%;*/
+/*}*/
+
+#breadcrumbs li:last-of-type {
+    font-weight: bold;
+}
+
+/*#breadcrumbs li:last-of-type:after {*/
+    /*content: "";*/
+/*}*/
+
+#breadcrumbs a {
+    color: #000;
+    text-decoration: none;
+    font-size: 90%;
+}
+
+#recipe-header {
+    width: 100%;
+}
+
+#recipe-header h1 {
+    float: right;
+    margin-bottom: 8%;
+}
+
+#edit_recipe_menu {
+    width: 16%;
+    float: left;
+}
+
+#edit_recipe_menu li {
+    float: right;
+    margin-left: 5%;
+}
+
+#edit_recipe_menu li:last-of-type {
+    margin-left: 0;
+}
+
+#edit_recipe_menu a {
+    width: 26px;
+    height: 26px;
+    display: block;
+}
+
+.print {
+    background: url("../images/print.png") no-repeat;
+}
+
+.star {
+    background: url("../images/star.png") no-repeat;
+}
+
+.edit {
+    background: url("../images/edit.png") no-repeat;
+}
+
+.recipe {
+    width: 100%;
+    padding-right: 9%;
+}
+
+.recipe h4 {
+    margin-bottom: 10%;
+}
+
+.recipe h3 {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-size: 150%;
+}
+
+.recipe p {
+    margin-bottom: 10%;
+    font-size: 110%;
+}
+
+.recipe section {
+    float: right;
+}
+
+.recipe li {
+    font-size: 110%;
+    line-height: 150%;
+}
+
+.recipe img {
+    float: left;
+}
