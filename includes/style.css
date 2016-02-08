@@ -415,29 +415,15 @@ input[type="submit"]:focus {
 
 #tools li {
     font-size: 150%;
-}
-
-#tools h3::after {
-    content: "";
-    display: inline-block;
-    width: 0.5em;
-    height: 0.5em;
-    border-right: 0.16em solid black;
-    border-top: 0.16em solid black;
-    transform: rotate(225deg);
-    border-color: rgb(230, 22, 16);
+    position: relative;
 }
 
 #tools li:hover {
     cursor: pointer;
 }
 
-/* Change color */
-#tools li:hover h3{
-    color: rgb(230, 22, 16); /* For the text */
-}
-#tools h3:hover::after {
-    border-color: red; /* For the arrow (which is a border) */
+#tools li:last-child h3 {
+    border-bottom: 1px dotted #CECBCB;
 }
 
 #tools h3 {
@@ -448,15 +434,39 @@ input[type="submit"]:focus {
     padding: 5% 2% 5% 0;
 }
 
-#tools li:last-child h3 {
-    border-bottom: 1px dotted #CECBCB;
+#tools h3::after {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    position: absolute;
+    top: 20px;
+    left: 14%;
+    border-right: 0.16em solid rgb(230, 22, 16);
+    border-top: 0.16em solid rgb(230, 22, 16);
+}
+
+.close h3::after {
+    transform: rotate(225deg);
+}
+
+.open h3::after {
+    transform: rotate(135deg);
+}
+
+#tools h3:hover::after {
+    border-color: red; /* For the arrow (which is a border) */
+}
+
+#what section {
+    margin-bottom: 9%;
 }
 
 #what span {
-    background: #e6e6e6;
+    background: #ebebeb;
     border-radius: 4px;
     font-size: 75%;
-    color: #606060;
+    color: #7a7a7a;
     padding: 1% 3%;
     cursor: pointer;
 }
