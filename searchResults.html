@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
-    <title>סטייק של בית</title>
-    <link rel="stylesheet" href="includes/style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>תוצאות חיפוש: בשר ועוף</title>
+        <link rel="stylesheet" href="includes/style.css">
+        <script src="includes/scripts.js"></script>
+    </head>
+    <body>
     <div id="wrapper">
         <header>
-            <a id="logo" href="#"></a>
+            <a id="logo" href="index.html"></a>
+            <form action="#" method="GET" id="searchBox">
+                <input type="search" placeholder="אני רוצה לבשל..." results="3" autosave="saved-searches">
+            </form>
             <a id="login" href="#">ברוך הבא,
                 <strong>בר ירון</strong>
             </a>
             <div class="clear"></div>
         </header>
-        <main>
+        <main id="searchResults">
             <nav id="breadcrumbs">
                 <ul >
-                    <li><a href="#">עמוד הבית</a></li>
-                    <li><a href="#">חיפוש: בשר ועוף + עגבניות + בצל</a></li>
-                    <li><a href="#">סטייק של בית</a></li>
+                    <li><a href="index.html">עמוד הבית</a></li>
+                    <li><a href="#">חיפוש: בשר ועוף</a></li>
                     <div class="clear"></div>
                 </ul>
             </nav>
@@ -47,7 +50,7 @@
             <section id="results">
                 <ul class="thumbs">
                     <li>
-                        <a href="#">
+                        <a href="recipe.html">
                             <img src="./images/steak2.jpg" alt="סטייק של בית" title="סטייק של בית">
                             <h4>סטייק של בית</h4>
                         </a>
@@ -102,23 +105,74 @@
         </main>
         <section id="tools">
             <a id="addBtn" href="#" class="btn">הוסף מתכון<button class="plus"></button></a>
-            <ul>
-                <li>
-                    <h3>מה מבשלים?</h3>
-                </li>
-                <li>
-                    <h3>סגנון</h3>
-                </li>
-                <li>
-                    <h3>רמת קושי</h3>
-                </li>
-                <li>
-                    <h3>בחר מצרכים</h3>
-                </li>
-            </ul>
-            <a id="searchBtn" href="#" class="btn">חפש</a>
+            <form action="#" method="GET">
+                <ul id="searchMenu">
+                    <li id="what" class="close">
+                        <h3>מה מבשלים ?</h3>
+                        <section class="hide">
+                            <label for="meatAndChicken">
+                                <a href="searchResults.html">
+                                    <span>בשר ועוף</span>
+                                    <input type="checkbox" id="meatAndChicken" name="what" value="בשר ועוף" >
+                                </a>
+                            </label>
+                            <label for="fish">
+                                <span>דגים</span>
+                                <input type="checkbox" id="fish" name="what" value="דגים">
+                            </label>
+                            <label for="cheese">
+                                <span>גבינות</span>
+                                <input type="checkbox" id="cheese" name="what" value="גבינות">
+                            </label>
+                            <label for="sweet">
+                                <span>מתוקים</span>
+                                <input type="checkbox" id="sweet" name="what" value="מתוקים">
+                            </label>
+                            <label for="soup">
+                                <span>מרקים</span>
+                                <input type="checkbox" id="soup" name="what" value="מרקים" >
+                            </label>
+                            <label for="pasta">
+                                <span>פסטה</span>
+                                <input type="checkbox" id="pasta" name="what" value="פסטה">
+                            </label>
+                            <label for="salad">
+                                <span>סלטים</span>
+                                <input type="checkbox" id="salad" name="what" value="סלטים">
+                            </label>
+                            <label for="bread">
+                                <span>לחמים</span>
+                                <input type="checkbox" id="bread" name="what" value="לחמים">
+                            </label>
+                        </section>
+                    </li>
+                    <li class="close">
+                        <h3>סגנון ?</h3>
+                        <section class="hide"></section>
+                    </li>
+                    <li class="close">
+                        <h3>רמת קושי ?</h3>
+                        <section class="hide"></section>
+                    </li>
+                    <li class="close">
+                        <h3>בחר מצרכים</h3>
+                        <section>
+                            <input type="text" class="searchBoxWithImg" placeholder="בא לי במתכון...">
+                        </section>
+                    </li>
+                </ul>
+                <input type="submit" value="חפש" id="searchBtn" href="#" class="btn">
+            </form>
         </section>
         <div class="clear"></div>
     </div>
-</body>
+    <script>
+        (function(){
+            init();
+        })();
+    </script>
+    </body>
 </html>
+
+
+

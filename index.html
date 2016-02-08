@@ -80,10 +80,10 @@
                 <div class="clear"></div>
                 <footer>
                     <ul>
-                        <li><a href="#">אודות</a><span class="dash">-</span></li>
-                        <li><a href="#">מפת אתר</a><span class="dash">-</span></li>
-                        <li><a href="#">תנאי שימוש</a><span class="dash">-</span></li>
-                        <li><a href="#">דרושים</a><span class="dash">-</span></li>
+                        <li><a href="#">אודות</a></li>
+                        <li><a href="#">מפת אתר</a></li>
+                        <li><a href="#">תנאי שימוש</a></li>
+                        <li><a href="#">דרושים</a></li>
                         <li><a href="#">כתבו לנו</a></li>
                         <li><a id="copyright" href="#">Copyright &copy 2015</a></li>
                     </ul>
@@ -95,11 +95,13 @@
                 <form action="#" method="GET">
                     <ul id="searchMenu">
                         <li id="what" class="close">
-                            <h3>מה מבשלים?</h3>
+                            <h3>מה מבשלים ?</h3>
                             <section class="hide">
                                 <label for="meatAndChicken">
-                                    <span>בשר ועוף</span>
-                                    <input type="checkbox" id="meatAndChicken" name="what" value="בשר ועוף" >
+                                    <a href="searchResults.html">
+                                        <span>בשר ועוף</span>
+                                        <input type="checkbox" id="meatAndChicken" name="what" value="בשר ועוף" >
+                                    </a>
                                 </label>
                                 <label for="fish">
                                     <span>דגים</span>
@@ -132,16 +134,18 @@
                             </section>
                         </li>
                         <li class="close">
-                            <h3>סגנון</h3>
+                            <h3>סגנון ?</h3>
                             <section class="hide"></section>
                         </li>
                         <li class="close">
-                            <h3>רמת קושי</h3>
+                            <h3>רמת קושי ?</h3>
                             <section class="hide"></section>
                         </li>
                         <li class="close">
                             <h3>בחר מצרכים</h3>
-                            <section class="hide"></section>
+                            <section>
+                                <input type="text" class="searchBoxWithImg" placeholder="בא לי במתכון...">
+                            </section>
                         </li>
                     </ul>
                     <input type="submit" value="חפש" id="searchBtn" href="#" class="btn">
