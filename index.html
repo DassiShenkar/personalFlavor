@@ -6,6 +6,7 @@
         <title>טעם אישי</title>
         <link rel="stylesheet" href="includes/style.css">
         <script src="includes/scripts.js"></script>
+        <script src="includes/picturefill.min.js" async></script>
     </head>
     <body>
         <div id="wrapper">
@@ -32,19 +33,37 @@
                     <ul class="thumbs">
                         <li>
                             <a href="recipe.html">
-                                <img src="./images/steak3.jpg" alt="סטייק של בית" title="סטייק של בית">
+                                <picture>
+                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                    <source srcset="./images/steak3.JPG" media="(min-width: 1000px)" title="סטייק של בית">
+                                    <source srcset="./images/steak3_small.jpg" media="(min-width: 780px)" title="סטייק של בית">
+                                    <!--[if IE 9]></video><![endif]-->
+                                    <img srcset="./images/steak3.JPG" alt="סטייק של בית" title="סטייק של בית">
+                                </picture>
                                 <h4>סטייק של בית</h4>
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <img src="./images/hamburger.JPG" alt="סנדוויץ קישוא וסלק" title="סנדוויץ קישוא וסלק">
+                            <a href="#">
+                                <picture>
+                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                    <source srcset="./images/hamburger.JPG" media="(min-width: 1000px)" title="סנדוויץ קישוא וסלק">
+                                    <source srcset="./images/hamburger_small.JPG" media="(min-width: 780px)" title="סנדוויץ קישוא וסלק">
+                                    <!--[if IE 9]></video><![endif]-->
+                                    <img srcset="./images/hamburger.JPG" alt="סנדוויץ קישוא וסלק" title="סנדוויץ קישוא וסלק">
+                                 </picture>
                                 <h4>סנדוויץ קישוא וסלק</h4>
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <img src="./images/veg.JPG" alt="ירקות כבושים כמו שאוהבים" title="ירקות כבושים כמו שאוהבים">
+                            <a href="#">
+                                <picture>
+                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                    <source srcset="./images/veg.JPG" media="(min-width: 1000px)" title="ירקות כבושים כמו שאוהבים">
+                                    <source srcset="./images/veg_small.JPG" media="(min-width: 780px)" title="ירקות כבושים כמו שאוהבים">
+                                    <!--[if IE 9]></video><![endif]-->
+                                    <img srcset="./images/veg.JPG" alt="ירקות כבושים כמו שאוהבים" title="ירקות כבושים כמו שאוהבים">
+                                </picture>
                                 <h4>ירקות כבושים כמו שאוהבים</h4>
                             </a>
                         </li>
@@ -61,7 +80,13 @@
                                 <p>סופלה שוקולד קל ומהיר להכנה...</p>
                             </secttion>
                         </section>
-                        <img src="./images/cake.jpg" alt="weekly recipe" title="weekly recipe">
+                        <picture>
+                            <!--[if IE 9]><video style="display: none;"><![endif]-->
+                            <source srcset="./images/cake.jpg" media="(min-width: 1000px)" title="מתכון השבוע">
+                            <source srcset="./images/cake_small.jpg" media="(min-width: 780px)" title="מתכון השבוע">
+                            <!--[if IE 9]></video><![endif]-->
+                            <img srcset="./images/cake.jpg" alt="מתכון השבוע" title="מתכון השבוע">
+                        </picture>
                     </article>
                     <article id="topWriters">
                         <section>
