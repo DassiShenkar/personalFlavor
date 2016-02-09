@@ -35,10 +35,10 @@
                             <a href="recipe.html">
                                 <picture>
                                     <!--[if IE 9]><video style="display: none;"><![endif]-->
-                                    <source srcset="./images/steak3.JPG" media="(min-width: 1000px)" title="סטייק של בית">
+                                    <source srcset="./images/steak3.jpg" media="(min-width: 1000px)" title="סטייק של בית">
                                     <source srcset="./images/steak3_small.jpg" media="(min-width: 780px)" title="סטייק של בית">
                                     <!--[if IE 9]></video><![endif]-->
-                                    <img srcset="./images/steak3.JPG" alt="סטייק של בית" title="סטייק של בית">
+                                    <img srcset="./images/steak3.jpg" alt="סטייק של בית" title="סטייק של בית">
                                 </picture>
                                 <h4>סטייק של בית</h4>
                             </a>
@@ -48,7 +48,7 @@
                                 <picture>
                                     <!--[if IE 9]><video style="display: none;"><![endif]-->
                                     <source srcset="./images/hamburger.JPG" media="(min-width: 1000px)" title="סנדוויץ קישוא וסלק">
-                                    <source srcset="./images/hamburger_small.JPG" media="(min-width: 780px)" title="סנדוויץ קישוא וסלק">
+                                    <source srcset="./images/hamburger_small.jpg" media="(min-width: 780px)" title="סנדוויץ קישוא וסלק">
                                     <!--[if IE 9]></video><![endif]-->
                                     <img srcset="./images/hamburger.JPG" alt="סנדוויץ קישוא וסלק" title="סנדוויץ קישוא וסלק">
                                  </picture>
@@ -60,7 +60,7 @@
                                 <picture>
                                     <!--[if IE 9]><video style="display: none;"><![endif]-->
                                     <source srcset="./images/veg.JPG" media="(min-width: 1000px)" title="ירקות כבושים כמו שאוהבים">
-                                    <source srcset="./images/veg_small.JPG" media="(min-width: 780px)" title="ירקות כבושים כמו שאוהבים">
+                                    <source srcset="./images/veg_small.jpg" media="(min-width: 780px)" title="ירקות כבושים כמו שאוהבים">
                                     <!--[if IE 9]></video><![endif]-->
                                     <img srcset="./images/veg.JPG" alt="ירקות כבושים כמו שאוהבים" title="ירקות כבושים כמו שאוהבים">
                                 </picture>
@@ -72,21 +72,22 @@
                 </section>
                 <section id="feed">
                     <article id="weeklyRecipe">
-                        <section>
-                            <h2>מתכון השבוע</h2>
-                            <secttion  id="content">
-                                <h4>סופלה שוקולד</h4>
-                                <h4 id="editor">מאת <a href="#">שלום לוי</a></h4>
-                                <p>סופלה שוקולד קל ומהיר להכנה...</p>
-                            </secttion>
-                        </section>
                         <picture>
                             <!--[if IE 9]><video style="display: none;"><![endif]-->
                             <source srcset="./images/cake.jpg" media="(min-width: 1000px)" title="מתכון השבוע">
-                            <source srcset="./images/cake_small.jpg" media="(min-width: 780px)" title="מתכון השבוע">
+                            <source srcset="./images/cake_large.jpg" media="(max-width: 999px)" title="מתכון השבוע">
                             <!--[if IE 9]></video><![endif]-->
                             <img srcset="./images/cake.jpg" alt="מתכון השבוע" title="מתכון השבוע">
                         </picture>
+                        <section>
+                            <h2>מתכון השבוע</h2>
+                            <section  id="content">
+                                <h4>סופלה שוקולד</h4>
+                                <h4 id="editor">מאת <a href="#">שלום לוי</a></h4>
+                                <p>סופלה שוקולד קל ומהיר להכנה...</p>
+                            </section>
+                        </section>
+                        <div class="clear"></div>
                     </article>
                     <article id="topWriters">
                         <section>
@@ -116,7 +117,13 @@
                 </footer>
             </main>
             <section id="tools">
-                <a id="addBtn" href="#" class="btn">הוסף מתכון<button class="plus"></button></a>
+                <a id="addBtn" href="#" class="btn">
+                    <span>הוסף מתכון</span>
+                    <svg id="plus_icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 125"
+                         enable-background="new 0 0 100 100" xml:space="preserve">
+                        <path fill="#000000" d="M50,5C25.2,5,5,25.2,5,50s20.2,45,45,45s45-20.2,45-45S74.8,5,50,5z M77,54.5H54.5V77h-9V54.5H23v-9h22.5V23  h9v22.5H77V54.5z"/>
+                    </svg>
+                </a>
                 <form action="#" method="GET">
                     <ul id="searchMenu">
                         <li id="what" class="close">
