@@ -58,6 +58,12 @@ h3 {
     font-weight: normal;
 }
 
+h5 {
+    font-size: 0.8vw;
+    font-weight: normal;
+    margin-bottom: 0.8%;
+}
+
 ul {
     list-style: none;
 }
@@ -66,7 +72,7 @@ strong {
     font-weight: bold;
 }
 
-input[type="text"], input[type="password"]  {
+input[type="text"], input[type="password"], textarea  {
     width: 100%;
     padding: 0 3%;
     line-height: 235%;
@@ -233,81 +239,81 @@ header input[type="search"] {
 
 /* loginPage */
 
-#loginPage main {
-    margin: 0 auto;
-    float: none;
-    position: static;
-}
+/*#loginPage main {*/
+    /*margin: 0 auto;*/
+    /*float: none;*/
+    /*position: static;*/
+/*}*/
 
-#loginPage form {
-    width: 80%;
-    margin: 5% auto;
-}
+/*#loginPage form {*/
+    /*width: 80%;*/
+    /*margin: 5% auto;*/
+/*}*/
 
-#loginPage form label {
-    display: block;
-    margin-bottom: 3%;
-    color: #414848;
-}
+/*#loginPage form label {*/
+    /*display: block;*/
+    /*margin-bottom: 3%;*/
+    /*color: #414848;*/
+/*}*/
 
-#loginPage input[type="submit"] {
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
-    line-height: 235%;
-    font-size: 1.5vw;
-    text-indent: 0px;
-    text-shadow: none;
-    background: #1abc9c;
-    border: 0;
-    border-bottom: 2px solid #12ab8d;
-    cursor: pointer;
-    -webkit-box-shadow: inset 0 -2px #12ab8d;
-    -moz-box-shadow: inset 0 -2px #12ab8d;
-    box-shadow: inset 0 -2px #12ab8d;
-}
+/*#loginPage input[type="submit"] {*/
+    /*color: #fff;*/
+    /*text-align: center;*/
+    /*font-weight: bold;*/
+    /*line-height: 235%;*/
+    /*font-size: 1.5vw;*/
+    /*text-indent: 0px;*/
+    /*text-shadow: none;*/
+    /*background: #1abc9c;*/
+    /*border: 0;*/
+    /*border-bottom: 2px solid #12ab8d;*/
+    /*cursor: pointer;*/
+    /*-webkit-box-shadow: inset 0 -2px #12ab8d;*/
+    /*-moz-box-shadow: inset 0 -2px #12ab8d;*/
+    /*box-shadow: inset 0 -2px #12ab8d;*/
+/*}*/
 
-#loginPage input[type="submit"]:hover {
-    background: #1abc9c;
-    color: #fff;
-}
+/*#loginPage input[type="submit"]:hover {*/
+    /*background: #1abc9c;*/
+    /*color: #fff;*/
+/*}*/
 
-#loginPage input[type="submit"]:active {
-    background: #12ab8d;
-    color: #fff;
-}
+/*#loginPage input[type="submit"]:active {*/
+    /*background: #12ab8d;*/
+    /*color: #fff;*/
+/*}*/
 
-#loginPage input {
-    width: 100%;
-    font-weight: 400;
-    font-size: 1.5vw;
-    text-indent: 0.5vw;
-    text-shadow: 1px 1px 0 rgba(256, 256, 256, 1.0);
-    background: #FFF;
-    border: 1px solid #FFF;
-    border-radius: 8px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
-    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
-}
+/*#loginPage input {*/
+    /*width: 100%;*/
+    /*font-weight: 400;*/
+    /*font-size: 1.5vw;*/
+    /*text-indent: 0.5vw;*/
+    /*text-shadow: 1px 1px 0 rgba(256, 256, 256, 1.0);*/
+    /*background: #FFF;*/
+    /*border: 1px solid #FFF;*/
+    /*border-radius: 8px;*/
+    /*box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);*/
+    /*-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);*/
+    /*-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);*/
+/*}*/
 
-#loginPage input:focus , textarea:focus, select:focus {
-    background: #DFECE7;
-    color: #414848;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
-    outline: 0;
-}
+/*#loginPage input:focus , textarea:focus, select:focus {*/
+    /*background: #DFECE7;*/
+    /*color: #414848;*/
+    /*box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);*/
+    /*-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);*/
+    /*-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);*/
+    /*outline: 0;*/
+/*}*/
 
-#loginPage input:hover {
-    background: #DFECE7;
-    color: #414848;
-}
+/*#loginPage input:hover {*/
+    /*background: #DFECE7;*/
+    /*color: #414848;*/
+/*}*/
 
-#loginPage input:-webkit-input-placeholder {
-    color: #b5b5b5;
-}
+/*#loginPage input:-webkit-input-placeholder {*/
+    /*color: #b5b5b5;*/
+/*}*/
 
 /* main page */
 
@@ -627,14 +633,16 @@ main#recipe-page {
     margin-left: 0%;
 }
 
-#recipe-header {
-    width: 100%;
+.recipe_title, input[type="text"].recipe_title {
+    margin-bottom: 7%;
+    font-size: 1.3vw;
+    line-height: 150%;
 }
 
-#recipe-header h1 {
-    float: right;
-    margin-bottom: 7%;
-    font-size: 1.9vw;
+.recipe_image {
+    float: left;
+    width: 276px;
+    height: 185px;
 }
 
 #edit_recipe_menu {
@@ -658,49 +666,50 @@ main#recipe-page {
     display: block;
 }
 
-.print {
+#print {
     background: url("../images/print.png") no-repeat;
 }
 
-.star {
+#star {
     background: url("../images/star.png") no-repeat;
 }
 
-.edit {
+#edit {
     background: url("../images/edit.png") no-repeat;
 }
 
-.recipe {
-    width: 100%;
-    padding-left: 13%;
-    padding-right: 7%;
+#recipe_header .recipe_title, #recipe_content {
+    float: right;
 }
 
-.recipe h4 {
+#recipe_header input[type="text"], #recipe_content {
+    width: 50%;
+}
+
+#recipe h4 {
     margin-bottom: 10%;
 }
 
-.recipe h3 {
+#recipe h3 {
     margin-top: 10%;
     margin-bottom: 10%;
 }
 
-.recipe p {
+#recipe p {
     margin-bottom: 10%;
     font-size: 1vw;
 }
 
-.recipe section {
-    float: right;
-}
-
-.recipe li {
+#recipe li {
     font-size: 1vw;
     line-height: 150%;
 }
 
-.recipe img {
+#recipe input[type="file"] {
     float: left;
+    margin-top: 3%;
+    text-align: left;
+    direction: ltr;
 }
 
 #recipe-page footer {
@@ -952,3 +961,10 @@ main#searchResults{
     }
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
