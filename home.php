@@ -1,3 +1,6 @@
+<?php
+    include 'dbHandler.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,9 +8,13 @@
         <meta name="viewport" content="width = device-width, initial-scale = 1.0">
         <title>טעם אישי</title>
         <link rel="stylesheet" href="includes/style.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="includes/scripts.js"></script>
+        <link type="text/css" rel="stylesheet" href="lightslider.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="includes/lightslider.js"></script>
         <script src="includes/picturefill.min.js" async></script>
+        <script src="includes/scripts.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -16,59 +23,67 @@
                     <form action="#" method="GET" id="searchBox">
                         <input type="search" placeholder="אני רוצה לבשל..." results="3" autosave="saved-searches">
                     </form>
-                    <a id="login" href="#">ברוך הבא,
-                        <strong>בר ירון</strong>
+                    <a id="logged" href="#">ברוך הבא,
+                        <strong>
+                            <?php
+                                echo $_SESSION['username'];
+                            ?>
+                        </strong>
                     </a>
                 <div class="clear"></div>
             </header>
             <main>
-                <nav id="mainNav">
-                    <ul>
-                        <li class="selected"><a href="#">המתכונים שאהבתי</a></li>
-                        <li><a href="#">מתכונים שערכתי</a></li>
-                        <li><a href="#">נצפה לאחרונה</a></li>
-                        <div class="clear"></div>
-                    </ul>
+                <nav id="mainNav" class="navbar-inverse navbar-static-top" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav nav-tabs nav-justified navbar-nav">
+                                <li class="active"><a href="home.php">המתכונים שאהבתי</a></li>
+                                <li><a href="home.php">מתכונים שערכתי</a></li>
+                                <li><a href="home.php">נצפה לאחרונה</a></li>
+                            </ul>
+                        </div>
                 </nav>
+<!--                <nav id="mainNav">-->
+<!--                    <ul class="nav nav-tabs nav-justified">-->
+<!--                        <li role="presentation" class="active"><a href="#">המתכונים שאהבתי</a></li>-->
+<!--                        <li role="presentation"><a href="#">מתכונים שערכתי</a></li>-->
+<!--                        <li role="presentation"><a href="#">נצפה לאחרונה</a></li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
                 <section id="gallery">
-                    <ul class="thumbs">
+                    <ul id="responsive">
                         <li>
-                            <a href="recipe.php">
-                                <picture>
-                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
-                                    <source srcset="./images/steak3.jpg" media="(min-width: 1000px)" title="סטייק של בית">
-                                    <source srcset="./images/steak3_small.jpg" media="(min-width: 780px)" title="סטייק של בית">
-                                    <!--[if IE 9]></video><![endif]-->
-                                    <img srcset="./images/steak3.jpg" alt="סטייק של בית" title="סטייק של בית">
-                                </picture>
-                                <h4>סטייק של בית</h4>
+                            <a href="#">
+                                <img src="" alt="">
+                                <h3></h3>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <picture>
-                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
-                                    <source srcset="./images/hamburger.JPG" media="(min-width: 1000px)" title="סנדוויץ קישוא וסלק">
-                                    <source srcset="./images/hamburger_small.jpg" media="(min-width: 780px)" title="סנדוויץ קישוא וסלק">
-                                    <!--[if IE 9]></video><![endif]-->
-                                    <img srcset="./images/hamburger.JPG" alt="סנדוויץ קישוא וסלק" title="סנדוויץ קישוא וסלק">
-                                 </picture>
-                                <h4>סנדוויץ קישוא וסלק</h4>
+                                <img src="" alt="">
+                                <h3></h3>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <picture>
-                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
-                                    <source srcset="./images/veg.JPG" media="(min-width: 1000px)" title="ירקות כבושים כמו שאוהבים">
-                                    <source srcset="./images/veg_small.jpg" media="(min-width: 780px)" title="ירקות כבושים כמו שאוהבים">
-                                    <!--[if IE 9]></video><![endif]-->
-                                    <img srcset="./images/veg.JPG" alt="ירקות כבושים כמו שאוהבים" title="ירקות כבושים כמו שאוהבים">
-                                </picture>
-                                <h4>ירקות כבושים כמו שאוהבים</h4>
+                                <img src="" alt="">
+                                <h3></h3>
                             </a>
                         </li>
-                        <div class="clear"></div>
+                        <li>
+                            <a href="#">
+                                <img src="" alt="">
+                                <h3></h3>
+                            </a>
+                        </li>
                     </ul>
                 </section>
                 <section id="feed">
@@ -105,20 +120,9 @@
                     <div class="clear"></div>
                 </section>
                 <div class="clear"></div>
-                <footer>
-                    <ul>
-                        <li><a href="#">אודות</a></li>
-                        <li><a href="#">מפת אתר</a></li>
-                        <li><a href="#">תנאי שימוש</a></li>
-                        <li><a href="#">דרושים</a></li>
-                        <li><a href="#">כתבו לנו</a></li>
-                        <li><a id="copyright" href="#">Copyright &copy 2015</a></li>
-                    </ul>
-                    <div class="clear"></div>
-                </footer>
             </main>
             <section id="tools">
-                <a id="addBtn" href="#" class="btn">
+                <a id="addBtn" href="recipe.php?edit_mode=true" class="btn">
                     <span>הוסף מתכון</span>
                     <svg id="plus_icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 125"
                          enable-background="new 0 0 100 100" xml:space="preserve">
@@ -149,6 +153,17 @@
                 <input type="submit" value="חפש" id="searchBtn" href="#" class="btn">
             </section>
             <div class="clear"></div>
+            <footer>
+                <ul>
+                    <li><a href="#">אודות</a></li>
+                    <li><a href="#">מפת אתר</a></li>
+                    <li><a href="#">תנאי שימוש</a></li>
+                    <li><a href="#">דרושים</a></li>
+                    <li><a href="#">כתבו לנו</a></li>
+                    <li><a id="copyright" href="#">Copyright &copy 2015</a></li>
+                </ul>
+                <div class="clear"></div>
+            </footer>
         </div>
         <script>
             (function(){
