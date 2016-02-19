@@ -1,36 +1,52 @@
 <?php
-    include('db.php');
+    include 'db.php';
 
-    $first_get_query = "SELECT * FROM tbl_recipe_53 order by title desc";
-    $result = mysqli_query($connection, $first_get_query);
-    if(!$result) {
-        die("DB query failed");
+    session_start();
+    $username = $_SESSION['username'];
+
+    function login($username, $password){
+        include('db.php');
+        if(isset($connection)){
+            $query = "SELECT *
+                      FROM tbl_users_53
+                      WHERE username = '$username'
+                      AND password = '$password'";
+            $result = mysqli_query($connection, $query);
+        }
+        $row = mysqli_fetch_assoc($result);
+
+        if(isset($connection)){
+            mysqli_close($connection);
+            unset($connection);
+        }
+        if ($row['userID'] == '0'){
+            return array('status' => 'OK', 'uid' => $row['userID']);
+        } else {
+            return array('status' => 'User not found', 'uid' => null);
+        }
     }
 
-    if(isset($_POST['title'])) {
-        $title = mysqli_real_escape_string($connection, $_POST['title']);
-        $category = mysqli_real_escape_string($connection, $_POST['category']);
-        $ingredients = mysqli_real_escape_string($connection, $_POST['ingredients']);
-        $preparation = mysqli_real_escape_string($connection, $_POST['preparation']);
-        $image = mysqli_real_escape_string($connection, $_POST['image']);
-
-        //SET
-        $query_set = "INSERT INTO tbl_recipe_53(title, category, ingredients, preparation, image) VALUES (N'$title',N'$category' , N'$ingredients', N'$preparation', N'$image')";
-        $result = mysqli_query($connection, $query_set);
-
-        //GET
-        $query_set = "SELECT * FROM tbl_recipe_53 order by title desc";
-        $result = mysqli_query($connection, $query_set);
-    }
-
-    //GET
-    echo "<ul>";
-    while($row = mysqli_fetch_assoc($result)) {
-        echo "<li><h2>" . $row["title"] . "</h2></li>";
-    }
-    echo "</ul>";
-
-    mysqli_free_result($result);
-
-    mysqli_close($connection);
+//    function saveRecipe($editor) {
+//        include ('db.php');
+//        $rid = ;
+//        $title = $_POST['title'];
+//        $category = $_POST['category'];
+//        $ingredients = $_POST['ingredients'];
+//        $preparation = $_POST['$preparation'];
+//        $image = $_POST['image'];
+//
+//        if(isset($connection)) {
+//            $query = "SELECT  id
+//                      FROM tbl_recipe_53
+//                      WHERE id = '$rid'";
+//            $result = mysqli_query($connection, $query);
+//            $row = mysqli_fetch_assoc($result);
+//            if(! $row){
+//                $query = "INSERT INTO tbl_recipe_53(title, editorID, category, ingredients, preparation, image)
+//						  VALUES('$title', '$editor', '$category', '$ingredients', '$preparation', '$image')";
+//                mysqli_query($connection, $query);
+//            }
+//        }
+//
+//    }
 ?>
