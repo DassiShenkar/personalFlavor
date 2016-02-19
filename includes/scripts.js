@@ -19,12 +19,13 @@ function init() {
                         cid = this.id;
                     }
                 })
-                $.post('toolbar.php', {'category': cid}, function(data){
-                    $.each(function(recipe){
-                        var id = recipe.id;
-                        alert(id);
-                    })
+                $.post('toolbar.php', {'category': cid}, function(data) {
                     document.location.href = 'searchResults.php?category=' + category.replace("-", " ");
+                    var recipes = $.parseJSON('[' + data.substring(data.indexOf("[")+1, data.indexOf("]")) + ']');
+                    $.each(recipes, function(key, value) {
+                        console.log(key + ":" + value);
+                        $('.thumbs').append("<li rid=" + value.id +"><img src=" + value.image + "><h4>" + value.title + "</h4></li>");
+                    });
                 });
             });
         });

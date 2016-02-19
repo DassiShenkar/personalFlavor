@@ -1,3 +1,13 @@
+<?php
+//include 'dbHandler.php';
+//if (isset($_POST['category']) && strlen(trim($_POST["category"])) > 0) {
+//    $result = getRecipesByCategory($_POST['category']);
+//    if ($result['status'] == 'OK') {
+//        echo json_encode($result['recipes']);
+//    }
+//}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +21,7 @@
     <body id="searchResults">
     <div id="wrapper">
         <header>
-            <a id="logo" href="index.php"></a>
+            <a id="logo" href="home.php"></a>
             <form action="#" method="GET" id="searchBox">
                 <input type="search" placeholder="אני רוצה לבשל..." results="3" autosave="saved-searches">
             </form>

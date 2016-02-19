@@ -26,18 +26,19 @@
         }
     }
 
-    function getRecipesByCategory($category) {
-        include 'db.php';
-        if(isset($connection)) {
-            $query = "SELECT id, title, image
+function getRecipesByCategory($category){
+    include 'db.php';
+    if (isset($connection)) {
+        $query = "SELECT id, title, image
                       FROM tbl_recipe_53
                       WHERE category = '$category'";
-            $result = mysqli_query($connection, $query);
+        $result = mysqli_query($connection, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $recipes[] = $row;
         }
-        while($row = mysqli_fetch_assoc($result)){
-            $rows[] = $row;
-        }
-        return array('status' => 'OK', 'recipes' => json_encode($rows));
+        return array('status' => 'OK', 'recipes' => $recipes);
+    }
+//        return array('status' => 'OK', 'recipes' => json_encode($rows));
 //            if(!$result) {
 //                $url = "searchResults.php?error=no recipes found";
 //            }
