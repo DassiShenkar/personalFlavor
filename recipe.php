@@ -1,3 +1,19 @@
+<?php
+    include 'dbHandler.php';
+    $editor =  $_SESSION['userID'];
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && ('#recipe').attr('action') == 'save') {
+            $editor = $_SESSION['userID'];
+            $response = saveRecipe($editor);
+            $query = 'error=' . $response;
+            if($response == 'OK') {
+                header('Location: recipe.php');
+            }
+            else {
+                header('Location: recipe.php?query');
+            }
+        }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +27,7 @@
     <body id="recipe-page">
     <div id="wrapper">
         <header>
-            <a id="logo" href="index.html"></a>
+            <a id="logo" href="home.php"></a>
             <form action="#" method="GET" id="searchBox">
                 <input type="search" placeholder="אני רוצה לבשל..." results="3" autosave="saved-searches">
             </form>
@@ -22,14 +38,14 @@
         </header>
         <main>
             <nav id="breadcrumbs">
-                <ul >
-                    <li><a href="login.html">עמוד הבית</a></li>
-                    <li><a href="searchResults.html">חיפוש: בשר ועוף</a></li>
+                <ul class="breadcrumbs">
+                    <li><a href="index.php">עמוד הבית</a></li>
+                    <li><a href="searchResults.php">חיפוש: בשר ועוף</a></li>
                     <li><a href="#">סטייק של בית</a></li>
                     <div class="clear"></div>
                 </ul>
             </nav>
-            <form id="recipe" method="post">
+            <form id="recipe" method="post" action="save">
                <section id="recipe_header">
                    <h1 class="recipe_title view_mode" >סטייק של בית</h1>
                    <label for="edit_title" class=" edit_mode hide">
@@ -39,7 +55,7 @@
                    <ul id="edit_recipe_menu" class="view_mode">
                        <li><a href="#" id="star"></a></li>
                        <li><a href="#" id="print"></a></li>
-                       <li><a href="#" id="edit"></a></li>
+                       <li><a href="" id="edit"></a></li>
                        <div class="clear"></div>
                    </ul>
                    <div class="clear"></div>
@@ -81,37 +97,7 @@
                 <div class="clear"></div>
             </footer>
         </main>
-        <section id="tools">
-            <a id="addBtn" href="#" class="btn">
-                <span>הוסף מתכון</span>
-                <svg id="plus_icon" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 125"
-                         enable-background="new 0 0 100 100" xml:space="preserve">
-                        <path fill="#000000" d="M50,5C25.2,5,5,25.2,5,50s20.2,45,45,45s45-20.2,45-45S74.8,5,50,5z M77,54.5H54.5V77h-9V54.5H23v-9h22.5V23  h9v22.5H77V54.5z"/>
-                    </svg>
-            </a>
-            <ul id="searchMenu">
-                <li class="close">
-                    <h3>מה מבשלים ?</h3>
-                    <section id="category-list" class="hide">
-                    </section>
-                </li>
-                <li class="close">
-                    <h3>סגנון ?</h3>
-                    <section class="hide"></section>
-                </li>
-                <li class="close">
-                    <h3>רמת קושי ?</h3>
-                    <section class="hide"></section>
-                </li>
-                <li class="close">
-                    <h3>בחר מצרכים</h3>
-                    <section>
-                        <input type="text" class="searchBoxWithImg" placeholder="בא לי במתכון...">
-                    </section>
-                </li>
-            </ul>
-            <input type="submit" value="חפש" id="searchBtn" href="#" class="btn">
-        </section>
+        <?php include("toolbar.php"); ?>
         <div class="clear"></div>
     </div>
     <script>
