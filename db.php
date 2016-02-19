@@ -6,6 +6,6 @@
     $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
     if(mysqli_connect_errno()) {
-        die("DB connection failed: " . "(" . mysqli_connect_errno() . ")");
+        die("The database is down is down: " . "(" . mysqli_connect_errno() . ")");
     }
 ?>
