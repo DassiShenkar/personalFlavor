@@ -26,33 +26,38 @@
         }
     }
 
-function getRecipesByCategory($category){
+if (isset($_POST['category'])) {
     include 'db.php';
+    $category = $_POST['category'];
     if (isset($connection)) {
         $query = "SELECT id, title, image
-                      FROM tbl_recipe_53
-                      WHERE category = '$category'";
+                          FROM tbl_recipe_53
+                          WHERE category = '$category'";
         $result = mysqli_query($connection, $query);
+        $json = array();
         while ($row = mysqli_fetch_assoc($result)) {
-            $recipes[] = $row;
+            $json[$row['id']] = array(
+                'title' => $row['title'],
+                'image' => $row['image']
+            );
         }
-        return array('status' => 'OK', 'recipes' => $recipes);
+        echo json_encode($json);
     }
-//        return array('status' => 'OK', 'recipes' => json_encode($rows));
-//            if(!$result) {
-//                $url = "searchResults.php?error=no recipes found";
-//            }
-//            else {
-//                $url = "searchResults.php?category=" . "$category'";
-//            }
-//            header('Location: ' . $url);
-//            $rows = array();
-//            while($row = mysqli_fetch_assoc($result)) {
-//                $rows[] = $row;
-//            }
-//             return array('status' => 'OK', 'recipes' => json_encode($rows));
+}
 
-    }
+//function getRecipesByCategory($category){
+//    include 'db.php';
+//    if (isset($connection)) {
+//        $query = "SELECT id, title, image
+//                          FROM tbl_recipe_53
+//                          WHERE category = '$category'";
+//        $result = mysqli_query($connection, $query);
+//        while ($row = mysqli_fetch_assoc($result)) {
+//            $recipes[] = $row;
+//        }
+//        return array('status' => 'OK', 'recipes' => $recipes);
+//    }
+//}
 
 //    function saveRecipe($editor) {
 //        include ('db.php');

@@ -9,25 +9,8 @@ function init() {
 
     $.getJSON('data/categories.json', function (json) {
         $.each(json.categories, function () {
-            var button = $("<button category=" + (this.name).replace(" ", "-") + ">" + this.name + "</button>");
-            $("#category-list").append(button);
-            button.click(function() {
-                var category = this.getAttribute("category");
-                var cid = 0;
-                $.each(json.categories, function() {
-                    if(this.name.indexOf(category.replace("-", " ")) != -1) {
-                        cid = this.id;
-                    }
-                })
-                $.post('toolbar.php', {'category': cid}, function(data) {
-                    document.location.href = 'searchResults.php?category=' + category.replace("-", " ");
-                    var recipes = $.parseJSON('[' + data.substring(data.indexOf("[")+1, data.indexOf("]")) + ']');
-                    $.each(recipes, function(key, value) {
-                        console.log(key + ":" + value);
-                        $('.thumbs').append("<li rid=" + value.id +"><img src=" + value.image + "><h4>" + value.title + "</h4></li>");
-                    });
-                });
-            });
+            var categoryElement = $('<input type="radio" name="category"' +' value=' + (this.name).replace(' ', '-') + '>' + this.name + '</input>');
+            $("#category-list").append(categoryElement);
         });
     });
 
@@ -47,6 +30,41 @@ function init() {
             $('#searchMenu').find("section#" + sectionName[0] +  "-list")[0].className = "show";
         }
     });
+
+    $('#searchForm').submit(function(evt){
+        var category = $('input[name=category]:checked', '#searchForm').val();
+        var cid = null;
+        $.getJSON('data/categories.json', function(json){
+            $.each(json.categories, function () {
+                if(this.name == category.replace("-", " ")){
+                    cid = this.id;
+                    document.location.href = "searchResults.php?category=" + this.id;
+                }
+            });
+        });
+        evt.preventDefault();
+    });
+
+
+    /* searchResults */
+    if(currentUrl.indexOf("searchResults")!= -1) {
+        var cid = (decodeURIComponent(currentUrl)).split("=")[1];
+        var datastring = 'category=' + cid;
+        $.ajax({
+           type: 'POST',
+            url: 'dbHandler.php',
+            cach: true,
+            data: datastring,
+            success: function(data) {
+                    var recipes = JSON.parse(data);
+                    console.log(JSON.parse(data));
+                    var list = $('.thumbs');
+                $.each(recipes, function(key, value){
+                   list.append('<li><a href="recipe.php?rid=' + key + '"></a><img src=' + this.image + '><h4>' + this.title + '</h4></li>');
+                });
+            }
+        });
+    }
 
     /* home */
 
