@@ -654,13 +654,13 @@ main#recipe-page {
     margin-left: 0%;
 }
 
-.recipe_title, input[type="text"].recipe_title {
+input[type="text"]#recipe_title {
     margin-bottom: 7%;
     font-size: 1.3vw;
     line-height: 150%;
 }
 
-.recipe_image {
+#recipe_image {
     float: left;
     width: 276px;
     height: 185px;
@@ -699,7 +699,7 @@ main#recipe-page {
     background: url("../images/edit.png") no-repeat;
 }
 
-#recipe_header .recipe_title, #recipe_content {
+#recipe_header #recipe_title, #recipe_content {
     float: right;
 }
 

@@ -6,6 +6,8 @@
     $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
     if(mysqli_connect_errno()) {
-        die("The database is down is down: " . "(" . mysqli_connect_errno() . ")");
+        die("Failed to connect to MySQL: "  . mysqli_connect_errno());
     }
+
+    mysqli_set_charset($connection,"utf8");
 ?>

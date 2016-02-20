@@ -1,19 +1,5 @@
 <?php
-    include 'dbHandler.php';
-    $editor =  $_SESSION['userID'];
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && ('#recipe').attr('action') == 'save') {
-            $editor = $_SESSION['userID'];
-            $response = saveRecipe($editor);
-            $query = 'error=' . $response;
-            if($response == 'OK') {
-                header('Location: recipe.php');
-            }
-            else {
-                header('Location: recipe.php?query');
-            }
-        }
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,9 +31,9 @@
                     <div class="clear"></div>
                 </ul>
             </nav>
-            <form id="recipe" method="post" action="save">
+            <form id="recipe" method="post" action="">
                <section id="recipe_header">
-                   <h1 class="recipe_title view_mode" >סטייק של בית</h1>
+                   <h1 id="recipe_title" class="view_mode"></h1>
                    <label for="edit_title" class=" edit_mode hide">
                        <h5>ערוך שם מתכון</h5>
                        <input type="text" id="edit_title" class="recipe_title" name="title" placeholder="שם המתכון">
@@ -61,25 +47,26 @@
                    <div class="clear"></div>
                </section>
                 <section id="recipe_content">
-                    <h4 class="view_mode"></h4>
+                    <h4 class="view_mode">קטגוריה</h4>
+                    <p id="recipe_category"></p>
                     <label for="edit_category" class="edit_mode hide">
                         <h5>בחר קטגוריה</h5>
                         <select name="category" id="edit_category" class="edit_mode hide"></select>
                     </label>
                     <h4 class="view_mode">חומרים</h4>
-                    <p class="ingredients view_mode"></p>
+                    <p id="ingredients" class="view_mode"></p>
                     <label for="edit_ingredients" class="edit_mode hide">
                         <h5>ערוך רשימת חומרים</h5>
                         <textarea id="edit_ingredients" name="ingredients" class="ingredients edit_mode hide"  rows="10"></textarea>
                     </label>
                     <h3 class="view_mode">אופן ההכנה</h3>
-                    <p class="preparation view_mode"></p>
+                    <p id="preparation" class="view_mode"></p>
                     <label for="edit_preparation" class="edit_mode hide">
                         <h5>ערוך אופן הכנה</h5>
                         <textarea id="edit_preparation" name="preparation" class="preparation edit_mode hide"  rows="10"></textarea>
                     </label>
                 </section>
-                <img class="recipe_image" src="" alt="" title="">
+                <img id="recipe_image" src="" alt="" title="">
                 <input type="file" name="image" id="upload_image" class="edit_mode hide">
                 <div class="clear"></div>
                 <input type="submit"  class="btn edit_mode hide" value="שמור">

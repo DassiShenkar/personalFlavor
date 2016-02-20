@@ -49,7 +49,7 @@ function init() {
     /* searchResults */
     if(currentUrl.indexOf("searchResults")!= -1) {
         var cid = (decodeURIComponent(currentUrl)).split("=")[1];
-        var datastring = 'category=' + cid;
+        var datastring = 'action=getByCategory&category=' + cid;
         $.ajax({
            type: 'POST',
             url: 'dbHandler.php',
@@ -60,7 +60,7 @@ function init() {
                     console.log(JSON.parse(data));
                     var list = $('.thumbs');
                 $.each(recipes, function(key, value){
-                   list.append('<li><a href="recipe.php?rid=' + key + '"></a><img src=' + this.image + '><h4>' + this.title + '</h4></li>');
+                   list.append('<li><a href="recipe.php?rid=' + key + '"><img src=' + this.image + '><h4>' + this.title + '</h4></a></li>');
                 });
             }
         });
@@ -142,6 +142,22 @@ function init() {
 
 
     if (currentUrl.indexOf("recipe") != -1) {
+        var rid = (decodeURIComponent(currentUrl)).split("=")[1];
+        var datastring = 'action=getRecipe' + '&rid=' + rid;
+        $.ajax({
+            type: 'POST',
+            url: 'dbHandler.php',
+            cach: true,
+            data: datastring,
+            success: function(data) {
+                var recipe = JSON.parse(data);
+                $('#recipe_title').text(recipe.title);
+                $('#recipe_image').attr("src", recipe.image);
+                $('#ingredients').text(recipe.ingredients);
+                $('#preparation').text(recipe.preparation);
+            }
+        });
+
 
         /*
          * recipe
@@ -151,7 +167,7 @@ function init() {
         $('#edit').click(function () {
 
             if(currentUrl.indexOf('edit_mode') == -1) {
-                this.href = currentUrl.replace('#', '') + '?edit_mode=true';
+                this.href = currentUrl.replace('#', '') + '&edit_mode=true';
                 currentUrl = this.href;
             }
 
@@ -186,39 +202,22 @@ function init() {
                 });
             });
 
-
-            /*
-             * recipe edit_mode
-             *  handle recipe image upload
-             * */
-
-            //$('#upload_image').change(function (evt) {
-            //    var file = evt.target.files[0];
-            //    if (file.type.match('image.*')) {
-            //        var reader = new FileReader();
-            //        reader.onload = (function (file) {
-            //            return function (evt) {
-            //                $('.recipe_image').attr("src", evt.target.result);
-            //                $('.recipe_image').attr("title", encodeURI(file.name));
-            //                $('.recipe_image').attr("alt", encodeURI(file.name));
-            //            };
-            //        })(file);
-            //        reader.readAsDataURL(file);
-            //    }
-            //});
-
             /*
              * recipe edit_mode
              *  save recipe
              * */
 
-            $('#recipe').submit(function () {
+
+            $('#recipe').submit(function (evt) {
+                var params = location.search.substring(1);
+                var paramsobj = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+                var rid = paramsobj.rid;
                 var title = $('#edit_title').val();
                 var category = $('#edit_category').val();
                 var ingredients = $('#edit_ingredients').val();
                 var preparation = $('#edit_preparation').val();
-                var imageUrl = $('#upload_image');
-                var dataString = 'title=' + title + '&category=' + category + '&ingredients=' + ingredients + "&preparation=" + preparation + "&imageUrl=" + imageUrl;
+                var imageUrl = $('#recipe_image').attr("src");
+                var dataString = 'action=saveRecipe&rid=' + rid + '&title=' + title + '&category=' + category + '&ingredients=' + ingredients + "&preparation=" + preparation + "&imageUrl=" + imageUrl;
 
                 $.ajax({
                     type: "POST",
@@ -229,7 +228,7 @@ function init() {
                         console.log("success");
                     }
                 });
-                return false;
+                evt.preventDefault();
             });
         }
     }

@@ -1,32 +1,4 @@
 <?php
-//
-//if (isset($_POST['category'])) {
-//    include 'db.php';
-//    $category = 1;
-//    if (isset($connection)) {
-//        $query = "SELECT id, title, image
-//                          FROM tbl_recipe_53
-//                          WHERE category = '$category'";
-//        $result = mysqli_query($connection, $query);
-//        $json = array();
-//        while ($row = mysqli_fetch_assoc($result)) {
-//            $json[$row['id']] = array(
-//                'title' => $row['title'],
-//                'image' => $row['image']
-//            );
-//        }
-//        echo json_encode($json);
-////        return array('status' => 'OK', 'recipes' => json_encode($recipes));
-//
-//    }
-//}
-
-//    $result = getRecipesByCategory($_POST['category']);
-//    if ($result['status'] == 'OK') {
-//        echo json_encode($result['recipes']);
-//    }
-
-
 
 ?>
 
@@ -81,12 +53,6 @@
 
             </form>
             <section id="results">
-<!--                --><?php
-//                include 'dbHandler.php';
-//                    $cid = explode('=', $_SERVER['QUERY_STRING'])[1];
-//
-//
-//                ?>
                 <ul class="thumbs">
                     <div class="clear"></div>
                 </ul>
