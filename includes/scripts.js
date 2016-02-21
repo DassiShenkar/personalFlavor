@@ -9,7 +9,7 @@ function init() {
 
     $.getJSON('data/categories.json', function (json) {
         $.each(json.categories, function () {
-            var categoryElement = $('<input type="radio" name="category"' + 'value=' + (this.name).replace(' ', '-') + '>' + this.name + '</input>');
+            var categoryElement = $('<input type="radio" name="category"' + 'value=' + (this.name).replace(' ', '-') + '>' + '<span>' + this.name + '</span></input>');
             $("#category-list").append(categoryElement);
         });
     });
@@ -49,6 +49,13 @@ function init() {
     /* searchResults */
     if(currentUrl.indexOf("searchResults")!= -1) {
         var cid = (decodeURIComponent(currentUrl)).split("=")[1];
+        $.getJSON('data/categories.json', function(json) {
+            $.each(json.categories, function() {
+                if(this.id == cid){
+                    $('#breadcrumbs > ul').append('<li><a href="#">תוצאות חיפוש:'+ this.name +'</a></li>');
+                }
+            });
+        });
         var datastring = 'action=getByCategory&category=' + cid;
         $.ajax({
            type: 'POST',
@@ -57,7 +64,6 @@ function init() {
             data: datastring,
             success: function(data) {
                     var recipes = JSON.parse(data);
-                    console.log(JSON.parse(data));
                     var list = $('.thumbs');
                 $.each(recipes, function(key, value){
                    list.append('<li><a href="recipe.php?rid=' + key + '"><img src=' + this.image + '><h4>' + this.title + '</h4></a></li>');
@@ -69,89 +75,110 @@ function init() {
     /* home */
 
     if(currentUrl.indexOf("home") != -1) {
-        $("#responsive").lightSlider({
-            item: 3,
-            autoWidth: true,
-            slideMove: 1, // slidemove will be 1 if loop is true
-            slideMargin: 10,
-
-            addClass: '',
-            mode: "slide",
-            useCSS: true,
-            cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
-            easing: 'linear', //'for jquery animation',////
-
-            speed: 400, //ms'
-            auto: false,
-            loop: false,
-            slideEndAnimation: true,
-            pause: 2000,
-
-            keyPress: false,
-            controls: true,
-            prevHtml: '',
-            nextHtml: '',
-
-            rtl:true,
-            adaptiveHeight:false,
-
-            vertical:false,
-            verticalHeight:500,
-            vThumbWidth:100,
-
-            thumbItem:10,
-            pager: true,
-            gallery: false,
-            galleryMargin: 5,
-            thumbMargin: 5,
-            currentPagerPosition: 'middle',
-
-            enableTouch:true,
-            enableDrag:true,
-            freeMove:true,
-            swipeThreshold: 40,
-
-            responsive : [
-                {
-                    breakpoint:800,
-                    settings: {
-                        item:3,
-                        slideMove:1,
-                        slideMargin:6,
-                    }
-                },
-                {
-                    breakpoint:480,
-                    settings: {
-                        item:2,
-                        slideMove:1
-                    }
-                }
-            ],
-
-            onBeforeStart: function (el) {},
-            onSliderLoad: function (el) {},
-            onBeforeSlide: function (el) {},
-            onAfterSlide: function (el) {},
-            onBeforeNextSlide: function (el) {},
-            onBeforePrevSlide: function (el) {}
-        });
-
         var datastring = 'action=getFavorites';
         $.ajax({
             type: 'POST',
             url: 'dbHandler.php',
-            cach: true,
+            cache: true,
             data: datastring,
             success: function(data) {
-                $.each(data, function (key, value) {
-                    var galleryThumb = $("<li><a href=" + this.id + "<img src=" + this.image + "><h3>" + this.title + "</h3></a></li>");
-                    $('#responsive').append(galleryThumb);
+                var recipes = JSON.parse(data);
+                var list = $('#responsive-images');
+                $.each(recipes, function (key, value) {
+                    var galleryThumb = $("<a href=recipe.php?rid=" + this.id + "><img src=" + this.image + "><h3>" + this.title + "</h3></a>");
+                    list.append(galleryThumb);
+                });
+                $("#responsive-images").lightSlider({
+                    item: 3,
+                    autoWidth: true,
+                    slideMove: 1, // slidemove will be 1 if loop is true
+                    slideMargin: 10,
+
+                    addClass: '',
+                    mode: "slide",
+                    useCSS: true,
+                    cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+                    easing: 'linear', //'for jquery animation',////
+
+                    speed: 400, //ms'
+                    auto: false,
+                    loop: false,
+                    slideEndAnimation: true,
+                    pause: 2000,
+
+                    keyPress: false,
+                    controls: true,
+                    prevHtml: '',
+                    nextHtml: '',
+
+                    rtl:true,
+                    adaptiveHeight:false,
+
+                    vertical:false,
+                    verticalHeight:500,
+                    vThumbWidth:100,
+
+                    thumbItem:10,
+                    pager: true,
+                    gallery: false,
+                    galleryMargin: 5,
+                    thumbMargin: 5,
+                    currentPagerPosition: 'middle',
+
+                    enableTouch:true,
+                    enableDrag:true,
+                    freeMove:true,
+                    swipeThreshold: 40,
+
+                    responsive : [
+                        {
+                            breakpoint:800,
+                            settings: {
+                                item:3,
+                                slideMove:1,
+                                slideMargin:6,
+                            }
+                        },
+                        {
+                            breakpoint:480,
+                            settings: {
+                                item:2,
+                                slideMove:1
+                            }
+                        }
+                    ],
+
+                    onBeforeStart: function (el) {},
+                    onSliderLoad: function (el) {},
+                    onBeforeSlide: function (el) {},
+                    onAfterSlide: function (el) {},
+                    onBeforeNextSlide: function (el) {},
+                    onBeforePrevSlide: function (el) {}
                 });
             }
         });
 
     }
+
+    $('#myRecipes').click(function () {
+        this.className = 'active';
+        var datastring = 'action=getMyRecipes';
+        $.ajax({
+            type: 'POST',
+            url: 'dbHandler.php',
+            cache: true,
+            data: datastring,
+            success: function (data) {
+                var recipes = JSON.parse(data);
+                var list = $('#responsive-images');
+                list.empty();
+                $.each(recipes, function (key, value) {
+                    var galleryThumb = $("<a href=recipe.php?rid=" + this.id + "><img src=" + this.image + "><h3>" + this.title + "</h3></a>");
+                    list.append(galleryThumb);
+                });
+            }
+        });
+    });
 
     /* recipe */
 
@@ -170,6 +197,17 @@ function init() {
                 $('#recipe_image').attr("src", recipe.image);
                 $('#ingredients').text(recipe.ingredients);
                 $('#preparation').text(recipe.preparation);
+
+                var cid = recipe.category;
+
+                $.getJSON('data/categories.json', function(json) {
+                    $.each(json.categories, function() {
+                        if(this.id == cid){
+                            $('#breadcrumbs > ul').append('<li><a href="#">תוצאות חיפוש:'+ this.name +'</a></li>');
+                            $('#breadcrumbs > ul').append('<li><a href="#">' + recipe.title +'</a></li>');
+                        }
+                    });
+                });
             }
         });
 

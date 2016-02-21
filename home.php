@@ -44,15 +44,15 @@
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav nav-tabs nav-justified navbar-nav">
-                                <li class="active"><a href="home.php">המתכונים שאהבתי</a></li>
-                                <li><a href="home.php">מתכונים שערכתי</a></li>
-                                <li><a href="home.php">נצפה לאחרונה</a></li>
+                                <li id="favorites"><a href="home.php">המתכונים שאהבתי</a></li>
+                                <li id="myRecipes"><a href="#">מתכונים שערכתי</a></li>
+                                <li id="recentlyViewed"><a href="#">נצפה לאחרונה</a></li>
                             </ul>
                         </div>
                 </nav>
                 <section id="gallery">
-                    <ul id="responsive">
-                    </ul>
+                    <div id="responsive-images">
+                    </div>
                 </section>
                 <section id="feed">
                     <article id="weeklyRecipe">

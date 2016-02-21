@@ -339,12 +339,12 @@ main {
     border-left: 1px solid #fff;
 }
 
-#mainNav .nav-tabs>li.active {
+#mainNav .nav-tabs > li.active {
     border: 1px solid #d6d6d6;
     border-bottom: 0;
 }
 
-#mainNav .nav-tabs>li.active a {
+#mainNav .nav-tabs> li.active {
     background: #fff;
 }
 
@@ -352,13 +352,17 @@ main {
     border-left: none;
 }
 
-#mainNav .nav-tabs>li>a {
+#mainNav .nav-tabs> li >a {
     font-size: 1vw;
     color: #606060;
     padding: 0;
     line-height: 250%;
     border: 0;
     margin-right: 0;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus {
+    background-color: #fff;
 }
 
 #mainNav .nav-tabs>li a:hover {
@@ -370,6 +374,7 @@ main {
 }
 
 #gallery {
+    min-height: 300px;
     padding: 1.8% 0;
     margin-bottom: 1.8%;
     border: 1px solid #d6d6d6;
@@ -619,7 +624,11 @@ h3.open::after {
     transform: rotate(135deg);
 }
 
-#category-list button {
+#category-list input {
+    display: none;
+}
+
+#category-list span {
     background: #ebebeb;
     border-radius: 4px;
     text-decoration: none;
@@ -632,12 +641,12 @@ h3.open::after {
     border: 0;
 }
 
-#category-list button:hover {
+#category-list span:hover {
     background: rgb(146, 146, 146);
     color: #fff;
 }
 
-#category-list button.selected {
+#category-list span.selected {
     background: rgb(146, 146, 146);
     color: #fff;
 }

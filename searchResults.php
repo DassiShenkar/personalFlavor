@@ -22,9 +22,8 @@
         </header>
         <main>
             <nav id="breadcrumbs">
-                <ul >
+                <ul>
                     <li><a href="index.php">עמוד הבית</a></li>
-                    <li><a href="#"><?php echo $_GET['category']?></a></li>
                     <div class="clear"></div>
                 </ul>
             </nav>

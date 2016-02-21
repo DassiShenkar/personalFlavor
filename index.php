@@ -12,18 +12,19 @@
             if($response['status'] == 'OK') {
                 $_SESSION['username'] = $username;
                 $_SESSION['userID'] = $response['uid'];
-                $url = "home.php?userID=" . $_SESSION['userID'];
-                header("Location:" .$url);
+                $url = "home.php";
+                header("Location:".$url);
             }
             else {
-                $error = "index.php?error=" . $response['status'];
-                header("Location:" . $error);
+                $error = "index.php?error=".$response['status'];
+                header("Location:".$error);
             }
         }
         else {
             header('Location: index.php');
         }
     }
+    else {
 ?>
 
 <!DOCTYPE html>
@@ -89,3 +90,4 @@
         </script>
     </body>
 </html>
+<?php } ?>

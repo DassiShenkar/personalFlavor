@@ -24,8 +24,6 @@
             <nav id="breadcrumbs">
                 <ul class="breadcrumbs">
                     <li><a href="index.php">עמוד הבית</a></li>
-                    <li><a href="searchResults.php">חיפוש: בשר ועוף</a></li>
-                    <li><a href="#">סטייק של בית</a></li>
                     <div class="clear"></div>
                 </ul>
             </nav>
