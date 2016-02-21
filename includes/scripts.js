@@ -8,8 +8,9 @@ function init() {
      * */
 
     $.getJSON('data/categories.json', function (json) {
+        var categoryElement;
         $.each(json.categories, function () {
-            var categoryElement = $('<input class=' + this.id + 'type="radio" name="category"' + 'value=' + (this.name).replace(' ', '-') + '>' + '<span class=' + this.id + >' + this.name + '</span></input>');
+            categoryElement = $('<input id=' + this.id + ' type="radio" name="category"' + 'value=' + (this.name).replace(' ', '-') + '><label class="category" for=' + this.id + '>' + this.name + '</label>');
             $("#category-list").append(categoryElement);
         });
     });
