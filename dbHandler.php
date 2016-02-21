@@ -39,6 +39,8 @@
             case 'saveRecipe':
                 saveRecipe();
                 break;
+            case 'like':
+                addFavorite();
         }
     }
 
@@ -103,29 +105,28 @@ function saveRecipe() {
     }
 }
 
-//    function saveRecipe($rid) {
-//        include ('db.php');
-//        $recipeID = $rid;
-//        $editorID = $_SESSION['userID'];
-//        $title = $_POST['title'];
-//        $category = $_POST['category'];
-//        $ingredients = $_POST['ingredients'];
-//        $preparation = $_POST['preparation'];
-//        $image = $_POST['image'];
-//
-//        if(isset($connection)) {
-//            $query = "SELECT  id
-//                      FROM tbl_recipe_53
-//                      WHERE id = '$recipeID'";
-//            $result = mysqli_query($connection, $query);
-//            $row = mysqli_fetch_assoc($result);
-//            if(!$row){
-//                $query = "INSERT INTO tbl_recipe_53(title, editorID, category, ingredients, preparation, image)
-//						  VALUES('$title', '$editorID', '$category', '$ingredients', '$preparation', '$image')";
-//                mysqli_query($connection, $query);
-//            }
-//            echo 'OK';
-//        }
-//
-//    }
+function addFavorite(){
+    include 'db.php';
+    $rid = $_POST['rid'];
+    $uid = $_SESSION['userID'];
+
+    if (isset($connection)) {
+        $query = "SELECT *
+                      FROM tbl_favorite_53
+                      WHERE userID = '$uid'
+                      AND recipeID = '$rid'";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        if (!$row) {
+            $query = "INSERT INTO tbl_favorite_53(userID, recipeID)
+                              VALUES('$uid', '$rid')";
+            mysqli_query($connection, $query);
+        }
+        echo 'success';
+    }
+
+
+
+}
+
 ?>

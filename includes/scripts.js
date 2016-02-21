@@ -173,6 +173,23 @@ function init() {
 
         });
 
+        $('#star').click(function(){
+            var params = location.search.substring(1);
+            var paramsobj = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+            var rid = paramsobj.rid;
+            var dataString = 'action=like&rid=' + rid;
+
+            $.ajax({
+                type: "POST",
+                url: "dbHandler.php",
+                data: dataString,
+                cache: true,
+                success: function (html) {
+                    console.log("success");
+                }
+            });
+        });
+
         /*
          * recipe edit_mode
          * */
@@ -193,12 +210,12 @@ function init() {
 
             /*
              * recipe edit_mode
-             *  create category cloud from json
+             *  create category list from json
              * */
 
             $.getJSON("data/categories.json", function (data) {
                 $.each(data.categories, function () {
-                    $("#edit_category").append("<option value=" + this.name + ">" + this.name + "</option>");
+                    $("#edit_category").append("<option value=" + this.id + ">" + this.name + "</option>");
                 });
             });
 
@@ -210,7 +227,7 @@ function init() {
 
             $('#recipe').submit(function (evt) {
                 var params = location.search.substring(1);
-                var paramsobj = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+                var paramsobj = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
                 var rid = paramsobj.rid;
                 var title = $('#edit_title').val();
                 var category = $('#edit_category').val();
