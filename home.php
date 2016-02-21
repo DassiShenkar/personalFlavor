@@ -42,7 +42,6 @@
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav nav-tabs nav-justified navbar-nav">
                                 <li class="active"><a href="home.php">המתכונים שאהבתי</a></li>
@@ -51,39 +50,8 @@
                             </ul>
                         </div>
                 </nav>
-<!--                <nav id="mainNav">-->
-<!--                    <ul class="nav nav-tabs nav-justified">-->
-<!--                        <li role="presentation" class="active"><a href="#">המתכונים שאהבתי</a></li>-->
-<!--                        <li role="presentation"><a href="#">מתכונים שערכתי</a></li>-->
-<!--                        <li role="presentation"><a href="#">נצפה לאחרונה</a></li>-->
-<!--                    </ul>-->
-<!--                </nav>-->
                 <section id="gallery">
                     <ul id="responsive">
-                        <li>
-                            <a href="#">
-                                <img src="" alt="">
-                                <h3></h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="" alt="">
-                                <h3></h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="" alt="">
-                                <h3></h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="" alt="">
-                                <h3></h3>
-                            </a>
-                        </li>
                     </ul>
                 </section>
                 <section id="feed">

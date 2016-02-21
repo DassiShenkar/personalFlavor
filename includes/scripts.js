@@ -9,7 +9,7 @@ function init() {
 
     $.getJSON('data/categories.json', function (json) {
         $.each(json.categories, function () {
-            var categoryElement = $('<input type="radio" name="category"' +' value=' + (this.name).replace(' ', '-') + '>' + this.name + '</input>');
+            var categoryElement = $('<input type="radio" name="category"' + 'value=' + (this.name).replace(' ', '-') + '>' + this.name + '</input>');
             $("#category-list").append(categoryElement);
         });
     });
@@ -136,6 +136,21 @@ function init() {
             onBeforeNextSlide: function (el) {},
             onBeforePrevSlide: function (el) {}
         });
+
+        var datastring = 'action=getFavorites';
+        $.ajax({
+            type: 'POST',
+            url: 'dbHandler.php',
+            cach: true,
+            data: datastring,
+            success: function(data) {
+                $.each(data, function (key, value) {
+                    var galleryThumb = $("<li><a href=" + this.id + "<img src=" + this.image + "><h3>" + this.title + "</h3></a></li>");
+                    $('#responsive').append(galleryThumb);
+                });
+            }
+        });
+
     }
 
     /* recipe */

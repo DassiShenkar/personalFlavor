@@ -41,6 +41,9 @@
                 break;
             case 'like':
                 addFavorite();
+                break;
+            case 'getFavorites':
+                getFavorites();
         }
     }
 
@@ -112,9 +115,9 @@ function addFavorite(){
 
     if (isset($connection)) {
         $query = "SELECT *
-                      FROM tbl_favorite_53
-                      WHERE userID = '$uid'
-                      AND recipeID = '$rid'";
+                  FROM tbl_favorite_53
+                  WHERE userID = '$uid'
+                  AND recipeID = '$rid'";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
         if (!$row) {
@@ -124,9 +127,29 @@ function addFavorite(){
         }
         echo 'success';
     }
+}
 
+function getFavorites() {
+    include 'db.php';
+    $uid = $_SESSION['userID'];
+    if(isset($connection)){
+        $query = "SELECT *
+                  FROM tbl_recipe_53
+                  WHERE id in (
+                    SELECT recipeID
+                    FROM tbl_favorite_53
+                    WHERE userID = '$uid')";
 
-
+        $result = mysqli_query($connection, $query);
+        $json = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $json[$row['id']] = array(
+                'title' => $row['title'],
+                'image' => $row['image']
+            );
+        }
+        print_r(array_values($json));
+    }
 }
 
 ?>
