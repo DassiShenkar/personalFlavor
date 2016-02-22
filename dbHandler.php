@@ -2,8 +2,7 @@
 session_start();
 $username = $_SESSION['username'];
 
-function login($username, $password)
-{
+function login($username, $password) {
     include('db.php');
     if (isset($connection)) {
         $query = "SELECT *
@@ -11,18 +10,17 @@ function login($username, $password)
                       WHERE username = '$username'
                       AND password = '$password'";
         $result = mysqli_query($connection, $query);
-    }
-    $row = mysqli_fetch_assoc($result);
-
-    if (isset($connection)) {
-        mysqli_close($connection);
-        unset($connection);
-    }
-
-    if ($row['userID'] == '0') {
-        return array('status' => 'OK');
-    } else {
-        return array('status' => 'User not found');
+        $row = mysqli_fetch_assoc($result);
+        if (isset($connection)) {
+            mysqli_close($connection);
+            unset($connection);
+        }
+        if(!$row) {
+            return 'משתמש לא קיים. נסה שוב';
+        }
+        else {
+            return 'OK';
+        }
     }
 }
 
@@ -55,7 +53,8 @@ if (isset($_POST['action'])) {
     }
 }
 
-function getRecipesByCategory(){
+function getRecipesByCategory()
+{
     if (isset($_POST['category'])) {
         include 'db.php';
         $category = $_POST['category'];

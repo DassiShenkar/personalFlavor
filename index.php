@@ -9,14 +9,14 @@
             $password = $_POST['password'];
             $response = login($username, $password);
 
-            if($response['status'] == 'OK') {
+            if($response == 'OK') {
                 $_SESSION['username'] = $username;
                 $_SESSION['userID'] = $response['uid'];
                 $url = "home.php";
                 header("Location:".$url);
             }
             else {
-                $error = "index.php?error=".$response['status'];
+                $error = "index.php?error=".$response;
                 header("Location:".$error);
             }
         }
@@ -32,35 +32,33 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width = device-width, initial-scale = 1.0">
-        <title>טעם אישי - כניסה או הרשמה</title>
+        <title>טעם אישי - כניסת משתמש</title>
+        <link href='https://fonts.googleapis.com/css?family=Arimo:700&subset=hebrew,latin' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="includes/style.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="includes/picturefill.min.js" async></script>
         <script src="includes/scripts.js"></script>
     </head>
     <body id="loginPage">
         <div id="wrapper">
             <header>
-                <a id="logo" href="#"></a>
-                    <form action="#" method="GET" id="searchBox" class="hide">
-                        <input type="search" placeholder="אני רוצה לבשל..." results="3" autosave="saved-searches">
-                    </form>
-                    <a id="logged" href="#" class="hide">ברוך הבא,
-                        <strong>בר ירון</strong>
-                    </a>
-                <div class="clear"></div>
+                <section id="logo">
+                    <a href="#"></a>
+                    <h1>טעם אישי</h1>
+                    <h6>כי לכל אחד יש טעם משלו</h6>
+                </section>
             </header>
             <main>
                  <form id="login" method="post" autocomplete="on" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                     <label for="username">
                         <span>שם משתמש</span>
-                        <input id="username" name="username" type="text" autofocus  required placeholder="שם משתמש" title="שם משתמש" >
+                        <input type="text" id="username" name="username"  autofocus  required placeholder="שם משתמש" title="שם משתמש" >
                     </label>
                     <label for="password">
                         <span>סיסמא</span>
-                        <input id="password" name="password" type="password" required placeholder="********" title="יסמא" >
+                        <input type="password" id="password" name="password"  required placeholder="********" title="סיסמא">
                     </label>
-                    <input type="submit" value="הרשם">
+                    <input type="submit" class="btn" value="התחבר">
                      <p id="response">
                          <?php
                             if(isset($_GET["error"])) {
@@ -69,17 +67,6 @@
                          ?>
                      </p>
                 </form>
-                <footer class="hide">
-                    <ul>
-                        <li><a href="#">אודות</a></li>
-                        <li><a href="#">מפת אתר</a></li>
-                        <li><a href="#">תנאי שימוש</a></li>
-                        <li><a href="#">דרושים</a></li>
-                        <li><a href="#">כתבו לנו</a></li>
-                        <li><a id="copyright" href="#">Copyright &copy 2015</a></li>
-                    </ul>
-                    <div class="clear"></div>
-                </footer>
             </main>
             <div class="clear"></div>
         </div>

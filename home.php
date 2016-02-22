@@ -9,6 +9,7 @@
         <title>טעם אישי</title>
         <link rel="stylesheet" href="includes/style.css">
         <link type="text/css" rel="stylesheet" href="lightslider.css" />
+        <link href='https://fonts.googleapis.com/css?family=Arimo:700&subset=hebrew,latin' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -18,20 +19,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <header>
-                <a id="logo" href="#"></a>
-                    <form action="#" method="GET" id="searchBox">
-                        <input type="search" placeholder="אני רוצה לבשל..." results="3" autosave="saved-searches">
-                    </form>
-                    <a id="logged" href="#">ברוך הבא,
-                        <strong>
-                            <?php
-                                echo $_SESSION['username'];
-                            ?>
-                        </strong>
-                    </a>
-                <div class="clear"></div>
-            </header>
+            <?php include("header.php"); ?>
             <main>
                 <nav id="mainNav" class="navbar-inverse navbar-static-top" role="navigation">
                         <div class="navbar-header">
