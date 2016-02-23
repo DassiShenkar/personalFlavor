@@ -1,12 +1,12 @@
 <?php
 session_start();
-$username = $_SESSION['username'];
+//$username = $_SESSION['username'];
 
 function login($username, $password)
 {
     include('db.php');
     if (isset($connection)) {
-        $query = "SELECT *
+        $query = "SELECT userID
                       FROM tbl_users_53
                       WHERE username = '$username'
                       AND password = '$password'";
@@ -17,9 +17,12 @@ function login($username, $password)
             unset($connection);
         }
         if (!$row) {
-            return 'משתמש לא קיים. נסה שוב';
+            $response = array('status' => 'FAILED', 'userID' => 'משתמש לא קיים. נסה שוב');
+            return $response;
         } else {
-            return 'OK';
+            $uid = $row['userID'];
+            $response = array('status' => 'OK', 'userID' => $uid);
+            return $response;
         }
     }
 }
@@ -34,6 +37,12 @@ if (isset($_POST['action'])) {
         case 'getByCategory':
             getRecipesByCategory();
             break;
+        case 'getWeeklyRecipe':
+            getWeeklyRecipe();
+            break;
+        case 'getTopWriters':
+            getTopWriters();
+            break;
         case 'saveRecipe':
             saveRecipe();
             break;
@@ -45,6 +54,9 @@ if (isset($_POST['action'])) {
             break;
         case 'getMyRecipes':
             getMyRecipes();
+            break;
+        case 'logout':
+            logout();
             break;
     }
     if (isset($connection)) {
@@ -96,6 +108,49 @@ function getRecipeById()
             }
             echo json_encode($row);
         }
+    }
+}
+
+function getWeeklyRecipe(){
+        include 'db.php';
+        if (isset($connection)) {
+            $query = "SELECT title, image, editorID, preparation, username
+                  FROM tbl_recipe_53
+                  INNER JOIN tbl_users_53
+                  ON tbl_recipe_53.isWeekly = 1
+                  AND tbl_recipe_53.editorID = tbl_users_53.userID";
+            $result = mysqli_query($connection, $query);
+            $row = mysqli_fetch_assoc($result);
+            if (isset($connection)) {
+                mysqli_close($connection);
+                unset($connection);
+            }
+            echo json_encode($row);
+        }
+}
+
+function getTopWriters(){
+    include 'db.php';
+    if (isset($connection)) {
+        $query = "SELECT editorID, username, count(editorID) as occurrence
+                  FROM tbl_recipe_53
+                  INNER JOIN tbl_users_53
+                  ON tbl_recipe_53.editorID = tbl_users_53.userID
+                  GROUP  BY editorID
+                  ORDER BY occurrence DESC
+                  LIMIT 5";
+        $result = mysqli_query($connection, $query);
+        $json = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $json[$row['editorID']] = array(
+                'username' => $row['username'],
+            );
+        }
+        if (isset($connection)) {
+            mysqli_close($connection);
+            unset($connection);
+        }
+        echo json_encode($json);
     }
 }
 

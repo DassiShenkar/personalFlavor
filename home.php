@@ -41,37 +41,12 @@
                 <section id="gallery">
                 </section>
                 <section id="feed">
-                    <article id="weeklyRecipe">
-                        <picture>
-                            <!--[if IE 9]><video style="display: none;"><![endif]-->
-                            <source srcset="./images/cake.jpg" media="(min-width: 1000px)" title="מתכון השבוע">
-                            <source srcset="./images/cake_large.jpg" media="(max-width: 999px)" title="מתכון השבוע">
-                            <!--[if IE 9]></video><![endif]-->
-                            <img srcset="./images/cake.jpg" alt="מתכון השבוע" title="מתכון השבוע">
-                        </picture>
-                        <section>
-                            <h2>מתכון השבוע</h2>
-                            <section  id="content">
-                                <h4>סופלה שוקולד</h4>
-                                <h4 id="editor">מאת <a href="#">שלום לוי</a></h4>
-                                <p>סופלה שוקולד קל ומהיר להכנה...</p>
-                            </section>
-                        </section>
-                        <div class="clear"></div>
-                    </article>
                     <article id="topWriters">
                         <section>
                             <h2>כותבים מובילים</h2>
-                            <ol>
-                                <li><a href="#">שלום לוי</a></li>
-                                <li><a href="#">לירן כהן</a></li>
-                                <li><a href="#">איציק בר</a></li>
-                                <li><a href="#">אהובה רוזנשטיין</a></li>
-                                <li><a href="#">גלעד ארדן</a></li>
-                            </ol>
+                            <ol></ol>
                         </section>
                     </article>
-                    <div class="clear"></div>
                 </section>
                 <div class="clear"></div>
             </main>

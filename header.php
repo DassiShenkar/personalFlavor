@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
 <header>
     <section id="logo">
         <a href="home.php"></a>
@@ -16,3 +21,5 @@
     </a>
     <div class="clear"></div>
 </header>
+</body>
+</html>

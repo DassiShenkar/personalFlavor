@@ -75,6 +75,10 @@ function init() {
 
     /* home */
 
+    $('#logged').click(function() {
+        document.location.href = "index.php";
+    })
+
     $('#favorites').click(function() {
         if((this.className).indexOf('active') != -1) {
             this.className += '';
@@ -91,6 +95,53 @@ function init() {
 
     if(currentUrl.indexOf("home") != -1) {
         favorites();
+        getWeeklyRecipe();
+        getTopWriters();
+    }
+
+    function getWeeklyRecipe() {
+        var feedElement = $('#feed');
+        var datastring = 'action=getWeeklyRecipe';
+        var article = $('#weeklyRecipe');
+        $.ajax({
+            type: 'POST',
+            url: 'dbHandler.php',
+            cache: true,
+            data: datastring,
+            success: function(data) {
+                var recipe = JSON.parse(data);
+                var weeklyElement = '<article id="weeklyRecipe"><picture><source srcset='+ recipe.image + ' media="(min-width: 1000px)" title=' + recipe.title + '>'
+                    + '<source srcset=' + recipe.image +  ' media="(max-width: 999px)" title=' + recipe.title + '>'
+                    + '<img srcset=' + recipe.image + ' alt=' + recipe.image +  ' title=' + recipe.title + '></picture><section>'
+                    + '<h2>מתכון השבוע</h2>'
+                    + '<section  id="content">'
+                    +'<h4>' + recipe.title + '</h4>'
+                    + '<h4 id="editor">מאת <a href="#">' + recipe.username + '</a></h4><p>' + recipe.preparation + '</p>'
+                    +'</section></section><div class="clear"></div></article>';
+                feedElement.append(weeklyElement);
+            }
+        });
+    }
+
+    function getTopWriters () {
+        var feedElement = $('#feed');
+        var datastring = 'action=getTopWriters';
+        var article = $('#topWriters');
+        $.ajax({
+            type: 'POST',
+            url: 'dbHandler.php',
+            cache: true,
+            data: datastring,
+            success: function(data) {
+                var writters = JSON.parse(data);
+                var topWritersList = $("#topWriters").find('ol');
+                var topwritters = '';
+                $.each(writters, function (key, value) {
+                    topwritters += "<li><a href=" + this.username + ">" + this.username + "</a></li>";
+                });
+                topWritersList.append(topwritters);
+            }
+        });
     }
 
     function favorites() {

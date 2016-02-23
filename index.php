@@ -1,30 +1,34 @@
 <?php
     include ('dbHandler.php');
-    $username = null;
-    $password = null;
+    if(isset($_SESSION["userID"])) {
+        $_SESSION["userID"] = FALSE;
+        session_destroy();
+    }
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if(isset($_POST['username']) && isset($_POST["password"])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $response = login($username, $password);
+        $username = null;
+        $password = null;
 
-            if($response == 'OK') {
-                $_SESSION['username'] = $username;
-                $_SESSION['userID'] = $response['uid'];
-                $url = "home.php";
-                header("Location:".$url);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(isset($_POST['username']) && isset($_POST["password"])) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $response = login($username, $password);
+                if($response['status'] == 'OK') {
+                    $_SESSION['username'] = $username;
+                    $_SESSION["userID"] = $response['userID'];
+                    $url = "home.php";
+                    header("Location:".$url);
+                }
+                else {
+                    $error = "index.php?error=".$response['userID'];
+                    header("Location:".$error);
+                }
             }
             else {
-                $error = "index.php?error=".$response;
-                header("Location:".$error);
+                header('Location: index.php');
             }
         }
         else {
-            header('Location: index.php');
-        }
-    }
-    else {
 ?>
 
 <!DOCTYPE html>
