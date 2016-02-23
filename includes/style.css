@@ -360,7 +360,6 @@ p#response {
 main {
     width: 71.2%;
     float: left;
-    position: relative;
     background: #fff;
     margin-left: 1.8%;
 }
@@ -372,55 +371,65 @@ main {
 #mainNav .nav-tabs>li {
     text-align: center;
     background: #ebebeb;
-    border-radius: 4px 4px 0 0;
+    border-radius: 8px 8px 0 0;
     border-bottom: 1px solid #d6d6d6;
     border-left: 1px solid #fff;
+    font-size: 130%;
+    color: #606060;
+    padding: 0;
+    line-height: 250%;
+    margin-right: 0;
+}
+#mainNav .nav-tabs>li:hover {
+    cursor: pointer;
 }
 
 #mainNav .nav-tabs > li.active {
     border: 1px solid #d6d6d6;
     border-bottom: 0;
-}
-
-#mainNav .nav-tabs> li.active {
     background: #fff;
+    color: #000;
 }
 
-#mainNav .nav-tabs>li:last-of-type {
-    border-left: none;
+#mainNav .navbar-toggle, .navbar-inverse {
+    border: none;
+    background: #929292;
 }
 
-#mainNav .nav-tabs> li >a {
-    font-size: 130%;
-    color: #606060;
+#mainNav .navbar-inverse, #mainNav .navbar-collapse {
+    border: none;
     padding: 0;
-    line-height: 250%;
-    border: 0;
-    margin-right: 0;
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus {
-    background-color: #fff;
-}
-
-#mainNav .nav-tabs>li a:hover {
-    background:#ebebeb ;
-}
-
-#mainNav .nav-tabs>li.active a:hover{
-    background: #fff;
+.navbar-header {
+    border: 1px solid #d6d6d6;
+    border-bottom: none;
 }
 
 #gallery {
-    min-height: 300px;
+    min-height: 265px;
     padding: 1.8% 0;
-    margin-bottom: 1.8%;
+    margin: 0 auto 1.8% auto;
     border: 1px solid #d6d6d6;
-    border-top: none;
 }
 
 #gallery .thumbs {
     padding: 1.4% 3.6%;
+}
+
+#gallery h3 {
+    color: #606060;
+    font-size: 130%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#gallery img {
+    opacity: 0.6;
+}
+
+#gallery a:hover img {
+    opacity: 1.0;
 }
 
 #feed {
@@ -499,6 +508,29 @@ main {
 #topWriters li a {
     color: rgb(61,138,247);
     font-size: 0.9vw;
+}
+
+@media (max-width: 767px) {
+
+    #mainNav .navbar-inverse, #mainNav .navbar-collapse li {
+        border-radius: 0;
+        border: 1px solid #d6d6d6;
+    }
+
+    #mainNav .navbar-nav {
+        margin: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    #gallery {
+        border-top: none;
+        max-width: 100%;
+    }
+
+    #mainNav .nav-tabs>li:last-of-type {
+        border-left: none;
+    }
 }
 
 /* end of main page */
@@ -626,10 +658,9 @@ footer li:nth-child(5) a:after , footer li:last-child a:after{
 #tools h3::after {
     content: "";
     display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
+    width: 18px;
+    height: 18px;
     position: absolute;
-    top: 20px;
     left: 14%;
     border-right: 0.16em solid rgb(230, 22, 16);
     border-top: 0.16em solid rgb(230, 22, 16);

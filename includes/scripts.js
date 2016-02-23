@@ -76,7 +76,17 @@ function init() {
     /* home */
 
     $('#favorites').click(function() {
-        favorites();
+        if((this.className).indexOf('active') != -1) {
+            this.className += '';
+        }
+        else {
+            var navItems = $('#mainNav').find('li');
+            $.each(navItems, function (index, item) {
+                item.className = "";
+            });
+            this.className += 'active';
+            favorites();
+        }
     });
 
     if(currentUrl.indexOf("home") != -1) {
@@ -108,7 +118,7 @@ function init() {
         $("#responsive-images").lightSlider({
             item: 3,
             autoWidth: true,
-            slideMove: 1, // slidemove will be 1 if loop is true
+            slideMove: 3, // slidemove will be 1 if loop is true
             slideMargin: 10,
 
             addClass: '',
@@ -124,7 +134,7 @@ function init() {
             pause: 2000,
 
             keyPress: false,
-            controls: true,
+            controls: false,
             prevHtml: '',
             nextHtml: '',
 
@@ -163,37 +173,39 @@ function init() {
                         slideMove:1
                     }
                 }
-            ],
-
-            onBeforeStart: function (el) {},
-            onSliderLoad: function (el) {},
-            onBeforeSlide: function (el) {},
-            onAfterSlide: function (el) {},
-            onBeforeNextSlide: function (el) {},
-            onBeforePrevSlide: function (el) {}
+            ]
         });
     }
 
     $('#myRecipes').click(function () {
-        this.className = 'active';
-        var datastring = 'action=getMyRecipes';
-        var list = $('#gallery');
-        var gallery = "";
-        $('#gallery').empty();
-        $.ajax({
-            type: 'POST',
-            url: 'dbHandler.php',
-            cache: true,
-            data: datastring,
-            success: function (data) {
-                var recipes = JSON.parse(data);
-                $.each(recipes, function (key, value) {
-                    gallery += "<a href=recipe.php?rid=" + this.id + "><img src=" + this.image + "><h3>" + this.title + "</h3></a>";
-                });
-                list.append('<div id="responsive-images">' + gallery + '</div>');
-                createGallery();
-            }
-        });
+        if((this.className).indexOf('active') != -1) {
+            return;
+        }
+        else {
+            var navItems = $('#mainNav').find('li');
+            $.each(navItems, function (index, item) {
+                item.className = "";
+            });
+            this.className = 'active';
+            var datastring = 'action=getMyRecipes';
+            var list = $('#gallery');
+            var gallery = "";
+            $('#gallery').empty();
+            $.ajax({
+                type: 'POST',
+                url: 'dbHandler.php',
+                cache: true,
+                data: datastring,
+                success: function (data) {
+                    var recipes = JSON.parse(data);
+                    $.each(recipes, function (key, value) {
+                        gallery += "<a href=recipe.php?rid=" + this.id + "><img src=" + this.image + "><h3>" + this.title + "</h3></a>";
+                    });
+                    list.append('<div id="responsive-images">' + gallery + '</div>');
+                    createGallery();
+                }
+            });
+        }
     });
 
     /* recipe */
@@ -209,10 +221,18 @@ function init() {
             data: datastring,
             success: function(data) {
                 var recipe = JSON.parse(data);
-                $('#recipe_title').text(recipe.title);
-                $('#recipe_image').attr("src", recipe.image);
-                $('#ingredients').text(recipe.ingredients);
-                $('#preparation').text(recipe.preparation);
+                if(currentUrl.indexOf('edit_mode') != -1) {
+                    $('#edit_title').val(recipe.title);
+                    $('#edit_ingredients').val(recipe.ingredients);
+                    $('#edit_preparation').val(recipe.preparation);
+                    $('#recipe_image').attr("src", recipe.image);
+                }
+                else {
+                    $('#recipe_title').text(recipe.title);
+                    $('#recipe_image').attr("src", recipe.image);
+                    $('#ingredients').text(recipe.ingredients);
+                    $('#preparation').text(recipe.preparation);
+                }
 
                 var cid = recipe.category;
 
@@ -295,23 +315,29 @@ function init() {
 
 
             $('#recipe').submit(function (evt) {
+                var rid = null;
+                var dataString;
                 var params = location.search.substring(1);
-                var paramsobj = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
-                var rid = paramsobj.rid;
+                var paramsobj = JSON.parse('{"' + decodeURI(params.replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}')
                 var title = $('#edit_title').val();
                 var category = $('#edit_category').val();
                 var ingredients = $('#edit_ingredients').val();
                 var preparation = $('#edit_preparation').val();
                 var imageUrl = $('#recipe_image').attr("src");
-                var dataString = 'action=saveRecipe&rid=' + rid + '&title=' + title + '&category=' + category + '&ingredients=' + ingredients + "&preparation=" + preparation + "&imageUrl=" + imageUrl;
-
+                if(!paramsobj.rid) {
+                    dataString = 'action=saveRecipe&&title=' + title + '&category=' + category + '&ingredients=' + ingredients + "&preparation=" + preparation + "&imageUrl=" + imageUrl;
+                }
+                else {
+                    rid = paramsobj.rid;
+                    dataString = 'action=saveRecipe&rid=' + rid + '&title=' + title + '&category=' + category + '&ingredients=' + ingredients + "&preparation=" + preparation + "&imageUrl=" + imageUrl;
+                }
                 $.ajax({
                     type: "POST",
                     url: "dbHandler.php",
                     data: dataString,
                     cache: true,
                     success: function (html) {
-                        console.log("success");
+                        document.location.href = 'recipe.php?rid=' + rid;
                     }
                 });
                 evt.preventDefault();

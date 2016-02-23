@@ -1,6 +1,6 @@
 <header>
     <section id="logo">
-        <a href="#"></a>
+        <a href="home.php"></a>
         <h1>טעם אישי</h1>
         <h6>כי לכל אחד יש טעם משלו</h6>
     </section>

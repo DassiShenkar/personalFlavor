@@ -32,9 +32,9 @@
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav nav-tabs nav-justified navbar-nav">
-                                <li id="favorites"><a href="#">המתכונים שאהבתי</a></li>
-                                <li id="myRecipes"><a href="#">מתכונים שערכתי</a></li>
-                                <li id="recentlyViewed"><a href="#">נצפה לאחרונה</a></li>
+                                <li id="favorites" class="active">המתכונים שאהבתי</li>
+                                <li id="myRecipes" class="">מתכונים שערכתי</li>
+                                <li id="recentlyViewed" class="">נצפה לאחרונה</li>
                             </ul>
                         </div>
                 </nav>
@@ -76,6 +76,7 @@
                 <div class="clear"></div>
             </main>
             <?php include("toolbar.php"); ?>
+            <div class="clear"></div>
             <footer>
                 <ul>
                     <li><a href="#">אודות</a></li>

@@ -1,3 +1,6 @@
+<?php
+include 'dbHandler.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,16 +13,7 @@
     </head>
     <body id="recipe-page">
     <div id="wrapper">
-        <header>
-            <a id="logo" href="home.php"></a>
-            <form action="#" method="GET" id="searchBox">
-                <input type="search" placeholder="אני רוצה לבשל..." results="3" autosave="saved-searches">
-            </form>
-            <a id="login" href="#">ברוך הבא,
-                <strong>בר ירון</strong>
-            </a>
-            <div class="clear"></div>
-        </header>
+        <?php include("header.php"); ?>
         <main>
             <nav id="breadcrumbs">
                 <ul class="breadcrumbs">

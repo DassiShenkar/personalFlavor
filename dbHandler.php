@@ -2,7 +2,8 @@
 session_start();
 $username = $_SESSION['username'];
 
-function login($username, $password) {
+function login($username, $password)
+{
     include('db.php');
     if (isset($connection)) {
         $query = "SELECT *
@@ -15,10 +16,9 @@ function login($username, $password) {
             mysqli_close($connection);
             unset($connection);
         }
-        if(!$row) {
+        if (!$row) {
             return 'משתמש לא קיים. נסה שוב';
-        }
-        else {
+        } else {
             return 'OK';
         }
     }
@@ -102,32 +102,73 @@ function getRecipeById()
 function saveRecipe()
 {
     include 'db.php';
-    $recipeID = $_POST['rid'];
+
     $title = $_POST['title'];
+    $uid = $_SESSION['userID'];
     $category = $_POST['category'];
     $ingredients = $_POST['ingredients'];
     $preparation = $_POST['preparation'];
     $image = $_POST['imageUrl'];
 
-    if (isset($connection)) {
-        $query = "SELECT *
+    if (isset($_POST['rid'])) {
+        $recipeID = $_POST['rid'];
+        if (isset($connection)) {
+            $query = "SELECT *
                       FROM tbl_recipe_53
-                      WHERE title = '$title'";
-        $result = mysqli_query($connection, $query);
-        $row = mysqli_fetch_assoc($result);
-        if (!$row) {
+                      WHERE id = '$recipeID'";
+            $result = mysqli_query($connection, $query);
+            $row = mysqli_fetch_assoc($result);
+            if (!$row) {
+                $query = "INSERT INTO tbl_recipe_53(title, editorID, category, ingredients, preparation, image)
+                              VALUES('$title', '$uid', '$category', '$ingredients', '$preparation', '$image')";
+                mysqli_query($connection, $query);
+                echo 'id not found: inserted' . json_encode($row);
+            } else {
+                $query = "SELECT *
+                      FROM tbl_recipe_53
+                      WHERE id = '$recipeID'
+                      AND editorID = '$uid'
+                      AND title = '$title'
+                      AND category = '$category'
+                      AND ingredients = '$ingredients'
+                      AND preparation = '$preparation'
+                      AND image = '$image'
+                      ";
+                $result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_assoc($result);
+                if (!$row) {
+                    $query = "UPDATE tbl_recipe_53
+                              SET editorID = '$uid',
+                                  title='$title',
+                                  category = '$category',
+                                  ingredients = '$ingredients',
+                                  preparation = '$preparation',
+                                  image = '$image'
+                              WHERE id = '$recipeID'";
+                    $result = mysqli_query($connection, $query);
+                    echo json_encode($result);
+
+                } else {
+                    echo json_encode($result);
+                }
+            }
+        }
+    } else {
+        if (isset($connection)) {
             $editorID = $_SESSION['userID'];
             $query = "INSERT INTO tbl_recipe_53(title, editorID, category, ingredients, preparation, image)
                               VALUES('$title', '$editorID', '$category', '$ingredients', '$preparation', '$image')";
-            mysqli_query($connection, $query);
+            $result = mysqli_query($connection, $query);
         }
-        if (isset($connection)) {
-            mysqli_close($connection);
-            unset($connection);
-        }
-        echo 'success';
+        echo 'no id. created new' . json_encode($result);
+    }
+
+    if (isset($connection)) {
+        mysqli_close($connection);
+        unset($connection);
     }
 }
+
 
 function addFavorite()
 {
