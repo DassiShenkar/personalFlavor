@@ -6,13 +6,12 @@ include 'dbHandler.php';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width = device-width, initial-scale = 1.0">
-        <title></title>
+        <title>טעם אישי - מתכון</title>
         <link href='https://fonts.googleapis.com/css?family=Arimo:700&subset=hebrew,latin' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="includes/style.css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="includes/scripts.js"></script>
     </head>
     <body id="recipe-page">
@@ -20,9 +19,8 @@ include 'dbHandler.php';
         <?php include("header.php"); ?>
         <main>
             <nav id="breadcrumbs">
-                <ul class="breadcrumbs">
+                <ul>
                     <li><a href="index.php">עמוד הבית</a></li>
-                    <div class="clear"></div>
                 </ul>
             </nav>
             <form id="recipe" method="post" action="">
@@ -33,7 +31,7 @@ include 'dbHandler.php';
                        <input type="text" id="edit_title" class="recipe_title" name="title" placeholder="שם המתכון">
                    </label>
                    <ul id="edit_recipe_menu" class="view_mode">
-                       <li><a href="#" id="star"></a></li>
+                       <li><a href="#" id="star" class="notFavorite"></a></li>
                        <li><a href="#" id="print"></a></li>
                        <li><a href="" id="edit"></a></li>
                        <div class="clear"></div>
@@ -63,23 +61,13 @@ include 'dbHandler.php';
                 <img id="recipe_image" src="" alt="" title="">
                 <input type="file" name="image" id="upload_image" class="edit_mode hide">
                 <div class="clear"></div>
-                <input type="submit"  class="btn edit_mode hide" value="שמור">
+                <input id="saveBtn" type="submit"  class="btn edit_mode hide" value="שמור">
             </form>
             <div class="clear"></div>
-            <footer>
-                <ul>
-                    <li><a href="#">אודות</a></li>
-                    <li><a href="#">מפת אתר</a></li>
-                    <li><a href="#">תנאי שימוש</a></li>
-                    <li><a href="#">דרושים</a></li>
-                    <li><a href="#">כתבו לנו</a></li>
-                    <li><a id="copyright" href="#">Copyright &copy 2015</a></li>
-                </ul>
-                <div class="clear"></div>
-            </footer>
         </main>
         <?php include("toolbar.php"); ?>
         <div class="clear"></div>
+        <?php include("footer.php"); ?>
     </div>
     <script>
         (function(){

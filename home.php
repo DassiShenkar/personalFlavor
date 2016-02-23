@@ -42,27 +42,18 @@
                 </section>
                 <section id="feed">
                     <article id="topWriters">
-                        <section>
                             <h2>כותבים מובילים</h2>
                             <ol></ol>
-                        </section>
+                    </article>
+                    <article id="weeklyRecipe">
                     </article>
                 </section>
                 <div class="clear"></div>
             </main>
             <?php include("toolbar.php"); ?>
             <div class="clear"></div>
-            <footer>
-                <ul>
-                    <li><a href="#">אודות</a></li>
-                    <li><a href="#">מפת אתר</a></li>
-                    <li><a href="#">תנאי שימוש</a></li>
-                    <li><a href="#">דרושים</a></li>
-                    <li><a href="#">כתבו לנו</a></li>
-                    <li><a id="copyright" href="#">Copyright &copy 2015</a></li>
-                </ul>
-                <div class="clear"></div>
-            </footer>
+            <?php include("footer.php"); ?>
+            <div class="clear"></div>
         </div>
         <script>
             (function(){

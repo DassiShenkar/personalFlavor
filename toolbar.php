@@ -38,5 +38,6 @@
         </ul>
         <input type="submit" id="searchBtn" name="searchRecipe" value="חפש"  href="#" >
     </form>
+    </section>
 </body>
 </html>

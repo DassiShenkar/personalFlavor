@@ -53,7 +53,8 @@ function init() {
         $.getJSON('data/categories.json', function(json) {
             $.each(json.categories, function() {
                 if(this.id == cid){
-                    $('#breadcrumbs > ul').append('<li><a href="#">תוצאות חיפוש:'+ this.name +'</a></li>');
+                    var breadcrumbs = '<li><a href="#">תוצאות חיפוש:'+ this.name +'</a></li><div class="clear"></div>';
+                    $('#breadcrumbs > ul').append(breadcrumbs);
                 }
             });
         });
@@ -100,7 +101,6 @@ function init() {
     }
 
     function getWeeklyRecipe() {
-        var feedElement = $('#feed');
         var datastring = 'action=getWeeklyRecipe';
         var article = $('#weeklyRecipe');
         $.ajax({
@@ -110,15 +110,15 @@ function init() {
             data: datastring,
             success: function(data) {
                 var recipe = JSON.parse(data);
-                var weeklyElement = '<article id="weeklyRecipe"><picture><source srcset='+ recipe.image + ' media="(min-width: 1000px)" title=' + recipe.title + '>'
+                var weeklyElement = '<picture><source srcset='+ recipe.image + ' media="(min-width: 1000px)" title=' + recipe.title + '>'
                     + '<source srcset=' + recipe.image +  ' media="(max-width: 999px)" title=' + recipe.title + '>'
                     + '<img srcset=' + recipe.image + ' alt=' + recipe.image +  ' title=' + recipe.title + '></picture><section>'
                     + '<h2>מתכון השבוע</h2>'
                     + '<section  id="content">'
                     +'<h4>' + recipe.title + '</h4>'
                     + '<h4 id="editor">מאת <a href="#">' + recipe.username + '</a></h4><p>' + recipe.preparation + '</p>'
-                    +'</section></section><div class="clear"></div></article>';
-                feedElement.append(weeklyElement);
+                    +'</section></section><div class="clear"></div>';
+                    article.append(weeklyElement);
             }
         });
     }
@@ -137,7 +137,7 @@ function init() {
                 var topWritersList = $("#topWriters").find('ol');
                 var topwritters = '';
                 $.each(writters, function (key, value) {
-                    topwritters += "<li><a href=" + this.username + ">" + this.username + "</a></li>";
+                    topwritters += "<li><a href=recipe.php?" + this.username + ">" + this.username + "</a></li>";
                 });
                 topWritersList.append(topwritters);
             }
@@ -290,8 +290,8 @@ function init() {
                 $.getJSON('data/categories.json', function(json) {
                     $.each(json.categories, function() {
                         if(this.id == cid){
-                            $('#breadcrumbs > ul').append('<li><a href="#">תוצאות חיפוש:'+ this.name +'</a></li>');
-                            $('#breadcrumbs > ul').append('<li><a href="#">' + recipe.title +'</a></li>');
+                            var breadcrumbs = '<li><a href="#">תוצאות חיפוש:'+ this.name +'</a></li><li><a href="#">' + recipe.title +'</a></li><div class="clear"></div>';
+                            $('#breadcrumbs > ul').append(breadcrumbs);
                         }
                     });
                 });
@@ -314,6 +314,7 @@ function init() {
         });
 
         $('#star').click(function(){
+            var starElement = this;
             var params = location.search.substring(1);
             var paramsobj = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
             var rid = paramsobj.rid;
@@ -325,7 +326,12 @@ function init() {
                 data: dataString,
                 cache: true,
                 success: function (html) {
-                    console.log("success");
+                    if((starElement.className).indexOf("not") != -1){
+                        starElement.className = "isFavorite";
+                    }
+                    else {
+                        starElement.className = "notFavorite";
+                    }
                 }
             });
         });
