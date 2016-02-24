@@ -257,7 +257,7 @@ function getFavorites()
     include 'db.php';
     $uid = $_SESSION['userID'];
     if (isset($connection)) {
-        $query = "SELECT *
+        $query = "SELECT id, title, image
                   FROM tbl_recipe_53
                   WHERE id in (
                     SELECT recipeID
@@ -286,7 +286,7 @@ function getMyRecipes()
     include 'db.php';
     $uid = $_SESSION['userID'];
     if (isset($connection)) {
-        $query = "SELECT *
+        $query = "SELECT id, title, image
                   FROM tbl_recipe_53
                   WHERE editorID = '$uid'";
 

@@ -270,7 +270,7 @@ header input[type="search"] {
     }
 }
 
-/* end of app header */
+/* end of header */
 
 
 /* loginPage(index.php) */
@@ -482,6 +482,12 @@ main {
     font-size: 100%;
 }
 
+@media (min-width: 768px) {
+    #gallery {
+        border-top: none;
+    }
+}
+
 @media (max-width: 767px) {
 
     #mainNav .navbar-inverse, #mainNav .navbar-collapse li {
@@ -494,7 +500,7 @@ main {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     #gallery {
         border-top: none;
         max-width: 100%;
@@ -650,16 +656,18 @@ footer a:nth-of-type(5):after , footer a:last-of-type:after{
     width: 18px;
     height: 18px;
     position: absolute;
-    left: 14%;
+    left: 15%;
+    top: 36%;
     border-right: 0.16em solid rgb(230, 22, 16);
     border-top: 0.16em solid rgb(230, 22, 16);
 }
 
-h3.initial::after {
+#tools h3.initial::after {
     transform: rotate(225deg);
 }
 
-h3.open::after {
+#tools h3.open::after {
+    top: 12%;
     transform: rotate(135deg);
 }
 
@@ -727,9 +735,13 @@ input[type="submit"]:focus {
         width: 100%;
     }
 
+    #tools h3.open::after {
+        top: 25%;
+    }
+
     main {
         width: 96.4%;
-        margin: 0 1.8%;
+        margin: 0 auto;
     }
 
     #plus_icon {
@@ -955,7 +967,7 @@ main#searchResults{
 
 @media (max-width: 961px) {
 
-    #tools {
+    #searchResults #tools {
         display: none;
     }
 

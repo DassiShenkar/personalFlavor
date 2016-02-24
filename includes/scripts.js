@@ -444,8 +444,8 @@ function init() {
                     url: "dbHandler.php",
                     data: dataString,
                     cache: true,
-                    success: function (html) {
-                        document.location.href = 'recipe.php?rid=' + rid;
+                    success: function (data) {
+                        document.location.href = 'recipe.php?rid=' + data;
                     }
                 });
                 evt.preventDefault();
