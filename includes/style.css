@@ -50,6 +50,10 @@ body a {
     text-decoration: none;
 }
 
+body a:hover, a:focus {
+    text-decoration: none;
+}
+
 body label {
     max-width: none;
 }
@@ -58,9 +62,6 @@ ul {
     list-style: none;
 }
 
-body a:hover, a:focus {
-    text-decoration: none;
-}
 
 strong {
     font-weight: bold;
@@ -120,6 +121,7 @@ input[type="search"]:focus {
 
 #breadcrumbs {
     width: 100%;
+    height: 16px;
     margin-bottom: 1.8%;
 }
 
@@ -148,41 +150,7 @@ input[type="search"]:focus {
 
 /* end of breadcrumbs */
 
-/* recipe thumb view */
-
-.thumbs li {
-    float: right;
-    text-align: center;
-    margin-left: 1.7%;
-}
-
-.thumbs li:last-of-type {
-    margin-left: 0;
-}
-
-.thumbs li a {
-    display: block;
-}
-
-.thumbs li h4 {
-    color: rgb(96,96,96);
-    font-size: 150%;
-    font-weight: normal;
-}
-
-.thumbs img {
-    opacity: 0.6;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
-}
-
-.thumbs img:hover {
-    opacity: 1.0;
-    filter: alpha(opacity=100); /* For IE8 and earlier */
-}
-
-/* end of recipe thumb view */
-
-/* app header */
+/* header */
 
 #logo {
     height: 100%;
@@ -302,13 +270,10 @@ header input[type="search"] {
     }
 }
 
-
-
 /* end of app header */
 
 
 /* loginPage(index.php) */
-
 
 #loginPage #logo {
     width: 141px;
@@ -396,7 +361,7 @@ main {
 }
 
 #gallery {
-    min-height: 265px;
+    min-height: 257px;
     padding: 1.8% 0;
     margin: 0 auto 1.8% auto;
     border: 1px solid #d6d6d6;
@@ -404,6 +369,34 @@ main {
 
 #gallery .thumbs {
     padding: 1.4% 3.6%;
+}
+
+.thumbs li {
+    float: right;
+    text-align: center;
+    margin-left: 1.7%;
+}
+
+.thumbs li:last-of-type {
+    margin-left: 0;
+}
+
+.thumbs li a {
+    display: block;
+}
+
+.thumbs li h4 {
+    color: rgb(96,96,96);
+    font-size: 150%;
+    font-weight: normal;
+}
+
+.thumbs img {
+    opacity: 0.6;
+}
+
+.thumbs img:hover {
+    opacity: 1.0;
 }
 
 #gallery h3 {
@@ -512,9 +505,9 @@ main {
     }
 }
 
-/* end of main page */
+/* end of home page */
 
-/* app footer */
+/* footer */
 
 footer {
     width: 71.2%;
@@ -534,9 +527,9 @@ footer a:last-of-type {
 }
 
 footer a:after {
-    content: "–";
+    content: "\2013";
     font-size: 0.3vw;
-    line-height: 79%;
+    line-height: 1.5;
     vertical-align: middle;
     margin: 0 3px;
 }
@@ -606,14 +599,6 @@ footer a:nth-of-type(5):after , footer a:last-of-type:after{
 #plus_icon path  {
     fill: #19B51F;
 }
-
-/*.one:hover{*/
-    /*background-color:rgba(0,0,0,.8);*/
-/*}*/
-
-/*.one:hover .two{*/
-    /*display:none;*/
-/*}*/
 
 #tools {
     width: 24.3%;
@@ -752,16 +737,14 @@ input[type="submit"]:focus {
     }
 }
 
-
 /* end of toolbar */
 
-/*  recipe single page */
+/* recipe single page */
 
 #recipe-page #logged {
     width: 20%;
     margin-left: 1%;
 }
-
 
 input[type="text"]#recipe_title {
     margin-bottom: 7%;
@@ -847,7 +830,16 @@ input[type="text"]#recipe_title {
 }
 
 #saveBtn {
-    font-size: 130%;
+    width: 25%;
+    font-size: 200%;
+    background: #e6e6e6;
+    color: #606060;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
 }
 
 #recipe-page footer {
@@ -870,6 +862,19 @@ input[type="text"]#recipe_title {
         height: 36px;
     }
 
+    #recipe_header input[type="text"], #recipe_content {
+        width: 100%;
+    }
+
+    #recipe_image, #recipe input[type="file"] {
+        float: none;
+        text-align: right;
+        direction: rtl;
+    }
+
+    #recipe_content {
+        margin-bottom: 5%;
+    }
 
     #edit {
         background: url("../images/edit_36.png") no-repeat;
@@ -968,6 +973,8 @@ main#searchResults{
 }
 
 /* end of search results page */
+
+/* Don't move! here for cascading reason */
 
 .show {
     display: block;

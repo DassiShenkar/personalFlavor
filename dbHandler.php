@@ -1,6 +1,5 @@
 <?php
 session_start();
-//$username = $_SESSION['username'];
 
 function login($username, $password)
 {
@@ -111,25 +110,27 @@ function getRecipeById()
     }
 }
 
-function getWeeklyRecipe(){
-        include 'db.php';
-        if (isset($connection)) {
-            $query = "SELECT title, image, editorID, preparation, username
+function getWeeklyRecipe()
+{
+    include 'db.php';
+    if (isset($connection)) {
+        $query = "SELECT title, image, editorID, preparation, username
                   FROM tbl_recipe_53
                   INNER JOIN tbl_users_53
                   ON tbl_recipe_53.isWeekly = 1
                   AND tbl_recipe_53.editorID = tbl_users_53.userID";
-            $result = mysqli_query($connection, $query);
-            $row = mysqli_fetch_assoc($result);
-            if (isset($connection)) {
-                mysqli_close($connection);
-                unset($connection);
-            }
-            echo json_encode($row);
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        if (isset($connection)) {
+            mysqli_close($connection);
+            unset($connection);
         }
+        echo json_encode($row);
+    }
 }
 
-function getTopWriters(){
+function getTopWriters()
+{
     include 'db.php';
     if (isset($connection)) {
         $query = "SELECT editorID, username, count(editorID) as occurrence

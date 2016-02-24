@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
 <section id="tools">
     <a id="addBtn" href="recipe.php?edit_mode=true">
         <span>
@@ -36,8 +31,6 @@
                 </section>
             </li>
         </ul>
-        <input type="submit" id="searchBtn" name="searchRecipe" value="חפש"  href="#" >
+        <input type="submit" id="searchBtn" name="searchRecipe" value="חפש">
     </form>
-    </section>
-</body>
-</html>
+</section>
